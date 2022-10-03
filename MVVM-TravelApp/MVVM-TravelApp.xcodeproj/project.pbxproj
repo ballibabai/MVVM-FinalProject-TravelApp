@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		1EC396EE28EA361E0085A47E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC396ED28EA361E0085A47E /* AppDelegate.swift */; };
 		1EC396F028EA361E0085A47E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC396EF28EA361E0085A47E /* SceneDelegate.swift */; };
-		1EC396F228EA361E0085A47E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC396F128EA361E0085A47E /* ViewController.swift */; };
+		1EC396F228EA361E0085A47E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC396F128EA361E0085A47E /* HomeViewController.swift */; };
 		1EC396F528EA361E0085A47E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EC396F328EA361E0085A47E /* Main.storyboard */; };
 		1EC396F728EA36200085A47E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1EC396F628EA36200085A47E /* Assets.xcassets */; };
 		1EC396FA28EA36200085A47E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EC396F828EA36200085A47E /* LaunchScreen.storyboard */; };
@@ -19,7 +19,7 @@
 		1EC396EA28EA361E0085A47E /* MVVM-TravelApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MVVM-TravelApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EC396ED28EA361E0085A47E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1EC396EF28EA361E0085A47E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		1EC396F128EA361E0085A47E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1EC396F128EA361E0085A47E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		1EC396F428EA361E0085A47E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1EC396F628EA36200085A47E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1EC396F928EA36200085A47E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -56,15 +56,47 @@
 		1EC396EC28EA361E0085A47E /* MVVM-TravelApp */ = {
 			isa = PBXGroup;
 			children = (
+				1ECCAFB028EAFB1D001643F6 /* HomeModule */,
 				1EC396ED28EA361E0085A47E /* AppDelegate.swift */,
 				1EC396EF28EA361E0085A47E /* SceneDelegate.swift */,
-				1EC396F128EA361E0085A47E /* ViewController.swift */,
+				1EC396F128EA361E0085A47E /* HomeViewController.swift */,
 				1EC396F328EA361E0085A47E /* Main.storyboard */,
 				1EC396F628EA36200085A47E /* Assets.xcassets */,
 				1EC396F828EA36200085A47E /* LaunchScreen.storyboard */,
 				1EC396FB28EA36200085A47E /* Info.plist */,
 			);
 			path = "MVVM-TravelApp";
+			sourceTree = "<group>";
+		};
+		1ECCAFB028EAFB1D001643F6 /* HomeModule */ = {
+			isa = PBXGroup;
+			children = (
+				1ECCAFB128EAFB56001643F6 /* Model */,
+				1ECCAFB328EAFB62001643F6 /* View */,
+				1ECCAFB228EAFB5C001643F6 /* ViewModel */,
+			);
+			path = HomeModule;
+			sourceTree = "<group>";
+		};
+		1ECCAFB128EAFB56001643F6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1ECCAFB228EAFB5C001643F6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1ECCAFB328EAFB62001643F6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +170,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1EC396F228EA361E0085A47E /* ViewController.swift in Sources */,
+				1EC396F228EA361E0085A47E /* HomeViewController.swift in Sources */,
 				1EC396EE28EA361E0085A47E /* AppDelegate.swift in Sources */,
 				1EC396F028EA361E0085A47E /* SceneDelegate.swift in Sources */,
 			);
