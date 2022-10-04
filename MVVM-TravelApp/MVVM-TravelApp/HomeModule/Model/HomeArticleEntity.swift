@@ -7,6 +7,14 @@
 
 import Foundation
 
+struct ArticleEntity {
+    let id: Int?
+    let category: String?
+    let images: String?
+    let description: String?
+    let title: String?
+}
+
 struct Article: Decodable {
     let id: Int?
     let category: String?

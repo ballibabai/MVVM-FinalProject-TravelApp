@@ -8,7 +8,8 @@
 import Foundation
 
 protocol HomeArticleViewModelProtocol: AnyObject {
-    func didCellItemFetch(_ articles: [Article])
+    func didCellItemFetch(_ isSuccess: Bool)
+    func navigateDetail(_ id: Int)
 }
 
 final class HomeArticleViewModel {
@@ -19,21 +20,41 @@ final class HomeArticleViewModel {
     init(){
           homeArticleModel.delegate = self
       }
-      
-      func didViewLoad(){
-          homeArticleModel.fetchData() //raw data
+    
+    func didViewLoad(){
+        homeArticleModel.fetchData() //raw data
+    }
+    
+    func numberOfSections() -> Int {1}
+    
+    func numberOfItems() -> Int {
+        return homeArticleModel.articles.count
+    }
+    
+    func getArticle(at index: Int) -> ArticleEntity {
+        return transfromArticleToArticleEntity(homeArticleModel.articles[index])
+    }
+        
+    func didClickItem(at index: Int){
+        let selectedItem = homeArticleModel.articles[index]
+        viewDelegate?.navigateDetail(selectedItem.id!)
+        print(selectedItem)
       }
     
+     func transfromArticleToArticleEntity(_ article: Article) -> ArticleEntity{
+        
+        return .init(id: article.id, category: article.category, images: article.images, description: article.description, title: article.title)
+    }
+    
 }
-
 extension HomeArticleViewModel: HomeArticleModelProtocol {
     func didDataFetchProcessFinish(_ isSuccess: Bool) {
         if isSuccess {
-            let articles = homeArticleModel.articles
-            print(articles)
-            viewDelegate?.didCellItemFetch(articles)
+            viewDelegate?.didCellItemFetch(true)
+            
         }else {
             print("erorr viewModel")
+            viewDelegate?.didCellItemFetch(false)
         }
     }
     
