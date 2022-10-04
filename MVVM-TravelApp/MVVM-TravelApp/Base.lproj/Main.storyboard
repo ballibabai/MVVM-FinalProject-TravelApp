@@ -28,7 +28,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="L0s-CA-nBM">
                                 <rect key="frame" x="0.0" y="582" width="414" height="206"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="SG8-Dv-UPa">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="SG8-Dv-UPa">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -37,7 +37,7 @@
                                 <cells/>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CO2-tu-DUx">
-                                <rect key="frame" x="20" y="378" width="83" height="68"/>
+                                <rect key="frame" x="20" y="398" width="83" height="68"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="83" id="RJ2-dl-eVB"/>
                                     <constraint firstAttribute="height" constant="68" id="rT0-rw-ids"/>
@@ -50,7 +50,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BCE-hZ-9RX">
-                                <rect key="frame" x="107" y="378" width="83" height="68"/>
+                                <rect key="frame" x="107" y="398" width="83" height="68"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="68" id="CsZ-Fb-kTo"/>
                                     <constraint firstAttribute="width" constant="83" id="aav-4s-Yi5"/>
@@ -60,7 +60,7 @@
                                 <buttonConfiguration key="configuration" style="plain" image="hotels"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where's your next destination?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Of-be-pTW">
-                                <rect key="frame" x="24" y="295" width="178" height="55"/>
+                                <rect key="frame" x="24" y="315" width="178" height="55"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -81,9 +81,9 @@
                             <constraint firstItem="L0s-CA-nBM" firstAttribute="top" secondItem="oWI-uq-950" secondAttribute="bottom" constant="8" id="YGB-fl-jAI"/>
                             <constraint firstItem="7Of-be-pTW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="ZEO-1Y-bXT"/>
                             <constraint firstItem="oWI-uq-950" firstAttribute="top" secondItem="Hav-Dq-BW8" secondAttribute="bottom" constant="8" id="aeX-ZC-8D2"/>
-                            <constraint firstItem="oWI-uq-950" firstAttribute="top" secondItem="CO2-tu-DUx" secondAttribute="bottom" constant="105" id="jyc-hO-s60"/>
+                            <constraint firstItem="oWI-uq-950" firstAttribute="top" secondItem="CO2-tu-DUx" secondAttribute="bottom" constant="85" id="jyc-hO-s60"/>
                             <constraint firstItem="CO2-tu-DUx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="tXV-4Z-dfl"/>
-                            <constraint firstItem="oWI-uq-950" firstAttribute="top" secondItem="BCE-hZ-9RX" secondAttribute="bottom" constant="105" id="wW4-MM-CbG"/>
+                            <constraint firstItem="oWI-uq-950" firstAttribute="top" secondItem="BCE-hZ-9RX" secondAttribute="bottom" constant="85" id="wW4-MM-CbG"/>
                             <constraint firstItem="BCE-hZ-9RX" firstAttribute="leading" secondItem="CO2-tu-DUx" secondAttribute="trailing" constant="4" id="y7d-1h-6Nx"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="L0s-CA-nBM" secondAttribute="bottom" constant="25" id="zL6-dq-M3I"/>
                         </constraints>
