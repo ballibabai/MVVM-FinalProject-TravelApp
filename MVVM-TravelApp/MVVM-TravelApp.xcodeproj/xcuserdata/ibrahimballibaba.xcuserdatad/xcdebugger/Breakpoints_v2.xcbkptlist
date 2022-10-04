@@ -55,114 +55,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D272D779-114F-4341-A659-E48EE92E8C82"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MVVM-TravelApp/HomeModule/View/HomeViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16"
-            landmarkName = "HomeViewController"
-            landmarkType = "3">
-            <Locations>
-               <Location
-                  uuid = "D272D779-114F-4341-A659-E48EE92E8C82 - 413fd51b01cfdf8"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MVVM_TravelApp.HomeViewController.newArticle.getter : Swift.Array&lt;MVVM_TravelApp.Article&gt;"
-                  moduleName = "MVVM-TravelApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ibrahimballibaba/Desktop/tries/MVVM-TravelApp/MVVM-TravelApp/HomeModule/View/HomeViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "16"
-                  endingLineNumber = "16"
-                  offsetFromSymbolStart = "88">
-               </Location>
-               <Location
-                  uuid = "D272D779-114F-4341-A659-E48EE92E8C82 - bbeeb3876eb6f9ec"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MVVM_TravelApp.HomeViewController.newArticle.setter : Swift.Array&lt;MVVM_TravelApp.Article&gt;"
-                  moduleName = "MVVM-TravelApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ibrahimballibaba/Desktop/tries/MVVM-TravelApp/MVVM-TravelApp/HomeModule/View/HomeViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "16"
-                  endingLineNumber = "16"
-                  offsetFromSymbolStart = "112">
-               </Location>
-               <Location
-                  uuid = "D272D779-114F-4341-A659-E48EE92E8C82 - b0e60e5de9464cfd"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MVVM_TravelApp.HomeViewController.newArticle.modify : Swift.Array&lt;MVVM_TravelApp.Article&gt;"
-                  moduleName = "MVVM-TravelApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ibrahimballibaba/Desktop/tries/MVVM-TravelApp/MVVM-TravelApp/HomeModule/View/HomeViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "16"
-                  endingLineNumber = "16"
-                  offsetFromSymbolStart = "0">
-               </Location>
-               <Location
-                  uuid = "D272D779-114F-4341-A659-E48EE92E8C82 - 5743235364c6e520"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MVVM_TravelApp.HomeViewController.newArticle.modify : Swift.Array&lt;MVVM_TravelApp.Article&gt; with unmangled suffix &quot;.resume.0&quot;"
-                  moduleName = "MVVM-TravelApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ibrahimballibaba/Desktop/tries/MVVM-TravelApp/MVVM-TravelApp/HomeModule/View/HomeViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "16"
-                  endingLineNumber = "16"
-                  offsetFromSymbolStart = "16">
-               </Location>
-               <Location
-                  uuid = "D272D779-114F-4341-A659-E48EE92E8C82 - 4daf528f5b579635"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MVVM_TravelApp.HomeViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; MVVM_TravelApp.HomeViewController"
-                  moduleName = "MVVM-TravelApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ibrahimballibaba/Desktop/tries/MVVM-TravelApp/MVVM-TravelApp/HomeModule/View/HomeViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "16"
-                  endingLineNumber = "16"
-                  offsetFromSymbolStart = "184">
-               </Location>
-               <Location
-                  uuid = "D272D779-114F-4341-A659-E48EE92E8C82 - 4beb7435629800e6"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MVVM_TravelApp.HomeViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;MVVM_TravelApp.HomeViewController&gt;"
-                  moduleName = "MVVM-TravelApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ibrahimballibaba/Desktop/tries/MVVM-TravelApp/MVVM-TravelApp/HomeModule/View/HomeViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "16"
-                  endingLineNumber = "16"
-                  offsetFromSymbolStart = "164">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "AB0C78C7-4F41-4933-8BE2-5CABAC54668D"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -170,8 +62,8 @@
             filePath = "MVVM-TravelApp/HomeModule/View/HomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "registerCell()"
             landmarkType = "7">
          </BreakpointContent>
@@ -186,41 +78,9 @@
             filePath = "MVVM-TravelApp/HomeModule/View/HomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
             landmarkName = "collectionView(_:layout:insetForSectionAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "6D1EA777-C34A-49CC-858D-D0F0F3F79CDA"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MVVM-TravelApp/HomeModule/View/HomeViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "didCellItemFetch(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "C71E0606-77C4-4501-8259-82CAA3E19188"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MVVM-TravelApp/HomeModule/View/HomeViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
-            landmarkName = "didCellItemFetch(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -234,8 +94,8 @@
             filePath = "MVVM-TravelApp/HomeModule/View/HomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
             landmarkName = "HomeViewController"
             landmarkType = "21">
          </BreakpointContent>
@@ -250,8 +110,8 @@
             filePath = "MVVM-TravelApp/HomeModule/ViewModel/HomeArticleViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
             landmarkName = "init()"
             landmarkType = "7">
          </BreakpointContent>
@@ -266,26 +126,10 @@
             filePath = "MVVM-TravelApp/HomeModule/ViewModel/HomeArticleViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "didViewLoad()"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "didClickItem(at:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "CEB6F891-D1E4-4FE5-9548-E1972A585736"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MVVM-TravelApp/HomeModule/ViewModel/HomeArticleViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "didDataFetchProcessFinish(_:)"
-            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -298,10 +142,10 @@
             filePath = "MVVM-TravelApp/HomeModule/ViewModel/HomeArticleViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
             landmarkName = "didDataFetchProcessFinish(_:)"
-            landmarkType = "9">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -314,10 +158,10 @@
             filePath = "MVVM-TravelApp/HomeModule/ViewModel/HomeArticleViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "didDataFetchProcessFinish(_:)"
-            landmarkType = "9">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -397,6 +241,22 @@
             startingLineNumber = "22"
             endingLineNumber = "22"
             landmarkName = "fetchData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C98168EE-A677-4247-B0AB-428FD90DFB61"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MVVM-TravelApp/HomeModule/ViewModel/HomeArticleViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "didDataFetchProcessFinish(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
