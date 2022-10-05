@@ -24,10 +24,10 @@ final class HomeArticleModel {
             let data = try Data(contentsOf: url)
             let jsonDecoder = JSONDecoder()
             let result = try jsonDecoder.decode(ArticleRecord.self, from: data)
-            if let array = result.abc{
+            if let array = result.articless{
                 articles = array
                 delegate?.didDataFetchProcessFinish(true)
-                print("deenemeee")
+               // print("deenemeee")
             }
             
         }catch {

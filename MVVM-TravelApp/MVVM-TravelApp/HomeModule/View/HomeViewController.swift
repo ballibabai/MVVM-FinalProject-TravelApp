@@ -10,7 +10,7 @@ import Kingfisher
 
 class HomeViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
-    
+    var enumType: whichButton?
     private let homeArticleViewModel = HomeArticleViewModel()
     
     
@@ -21,6 +21,20 @@ class HomeViewController: UIViewController {
         homeArticleViewModel.viewDelegate = self
         homeArticleViewModel.didViewLoad()
     }
+    @IBAction func hotelFlightClicked(_ sender: UIButton) {
+        if sender.tag == 0 {
+                let flight = storyboard?.instantiateViewController(withIdentifier: "toListVC") as! ListViewController
+                flight.enumType = .flight
+                navigationController?.pushViewController(flight, animated: true)
+        }else {
+                let hotel = storyboard?.instantiateViewController(withIdentifier: "toListVC") as! ListViewController
+                hotel.enumType = .hotel
+                navigationController?.pushViewController(hotel, animated: true)
+            
+        }
+
+    }
+    
 
 }
 
@@ -80,16 +94,8 @@ extension HomeViewController: HomeArticleViewModelProtocol {
     
     func navigateDetail(_ id: Int) {
         let detailVC = storyboard?.instantiateViewController(withIdentifier: "toDetailVC") as! DetailViewController
-        //let detailVC = DetailViewController()
-        detailVC.modalPresentationStyle = .fullScreen
-       // let model = DetailModel(id: id)
-     //   let vm = DetailViewModel(detailModel: model)
-     //   model.detailVM = vm
-     //   detailVC.detailVM = vm
         detailVC.articles = homeArticleViewModel.getArticle(at: id)
-        present(detailVC, animated: true)
-       // navigationController?.pushViewController(detailVC, animated: true)
-        //present(detailVC, animated: true)
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 
