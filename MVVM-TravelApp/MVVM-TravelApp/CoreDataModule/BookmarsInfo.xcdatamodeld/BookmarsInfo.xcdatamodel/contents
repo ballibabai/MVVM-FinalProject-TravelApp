@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21G83" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="BookmarkData" representedClassName="BookmarkData" syncable="YES">
+        <attribute name="dataDescription" optional="YES" attributeType="String"/>
+        <attribute name="dataImage" optional="YES" attributeType="String"/>
+        <attribute name="dataTitle" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="BookmarkData" positionX="-63" positionY="-18" width="128" height="74"/>
+    </elements>
+</model>

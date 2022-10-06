@@ -6,7 +6,17 @@
 //
 
 import Foundation
+import CoreData
 
 final class DetailModel {
     
+    func fetchData(titleText: String, descriptionText: String, imageView: String){
+            let managedContext = AppDelegate.sharedAppDelegate.coreDataStack.managedContext
+            let data = BookmarkData(context: managedContext)
+            //data.setValue(UUID, forKey: #keyPath(BookmarkData.dataId))
+            data.setValue(imageView, forKey: #keyPath(BookmarkData.dataImage))
+            data.setValue(titleText, forKey: #keyPath(BookmarkData.dataTitle))
+            data.setValue(descriptionText, forKey: #keyPath(BookmarkData.dataDescription))
+            AppDelegate.sharedAppDelegate.coreDataStack.saveContext()
+        }
 }

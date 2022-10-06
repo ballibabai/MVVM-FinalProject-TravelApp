@@ -14,13 +14,14 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionText: UITextView!
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var onOffButton: UIButton!
     
     var articles: ArticleEntity?
     var hotels: HotelList?
     var flight: FlightList?
     var searchList: SearchEntity?
     
-    var detailVM: DetailViewModel?
+    var detailVM = DetailViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,6 +75,10 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func addButtonTapped(_ sender: UIButton) {
+        
+        detailVM.saveButtonTapped(titleText: (searchList?.name)!, descriptionText: (searchList?.description)!, imageView: (searchList?.image)!) //take input from user and use function for save data
+              
+        
     }
     
     @IBAction func backButton(_ sender: UIButton) {

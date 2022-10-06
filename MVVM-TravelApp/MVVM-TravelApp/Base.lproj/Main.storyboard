@@ -237,6 +237,7 @@
                         <outlet property="categoryLabel" destination="saN-ew-PMQ" id="snR-Vr-rPW"/>
                         <outlet property="descriptionText" destination="0zY-Dd-fJ1" id="2a6-K3-PI5"/>
                         <outlet property="iamgeView" destination="y0P-IN-4AJ" id="KvY-EG-rdv"/>
+                        <outlet property="onOffButton" destination="xcN-5M-VGv" id="xqE-9W-l81"/>
                         <outlet property="titleLabel" destination="mfP-PP-Eq6" id="Jwn-hW-y8c"/>
                     </connections>
                 </viewController>
@@ -247,7 +248,7 @@
         <!--Bookmarks-->
         <scene sceneID="1da-qv-FfH">
             <objects>
-                <viewController id="3dF-aO-vo9" customClass="BookmarksViewController" customModule="MVVM_TravelApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="toBookmarksVC" id="3dF-aO-vo9" customClass="BookmarksViewController" customModule="MVVM_TravelApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3i7-Ik-wmW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -280,6 +281,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="nav bar button-4" selectedImage="nav bar button-5" id="afa-M8-w89"/>
                     <navigationItem key="navigationItem" title="Bookmarks" id="ce6-HO-aLU"/>
+                    <connections>
+                        <outlet property="bookmarksTableView" destination="Pd4-il-LgB" id="0do-Pu-sWP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jxH-J9-sj7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

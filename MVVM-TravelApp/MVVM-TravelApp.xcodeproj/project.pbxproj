@@ -12,8 +12,13 @@
 		1E148CB628EE224E004D2CD5 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E148CB528EE224E004D2CD5 /* SearchModel.swift */; };
 		1E148CB828EE22A1004D2CD5 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E148CB728EE22A1004D2CD5 /* SearchViewModel.swift */; };
 		1E78ABF528EEDAE7005CF873 /* SearchEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E78ABF428EEDAE7005CF873 /* SearchEntity.swift */; };
+		1E78ABFB28EF1651005CF873 /* BookmarsInfo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1E78ABF928EF1651005CF873 /* BookmarsInfo.xcdatamodeld */; };
 		1EA54E0928ED7E840015A494 /* flightssData.json in Resources */ = {isa = PBXBuildFile; fileRef = 1EA54E0828ED7E840015A494 /* flightssData.json */; };
 		1EA54E0B28ED7EBF0015A494 /* FlightListEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA54E0A28ED7EBF0015A494 /* FlightListEntity.swift */; };
+		1EBD269B28EF8A77000676A6 /* BookmarksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBD269A28EF8A77000676A6 /* BookmarksModel.swift */; };
+		1EBD269D28EF8A88000676A6 /* BookmarksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBD269C28EF8A88000676A6 /* BookmarksViewModel.swift */; };
+		1EBD26A028EF8DE9000676A6 /* BookmarksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBD269E28EF8DE9000676A6 /* BookmarksTableViewCell.swift */; };
+		1EBD26A128EF8DE9000676A6 /* BookmarksTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1EBD269F28EF8DE9000676A6 /* BookmarksTableViewCell.xib */; };
 		1EC28C4628ECD5C0002D31C1 /* HotelsData.json in Resources */ = {isa = PBXBuildFile; fileRef = 1EC28C4528ECD5C0002D31C1 /* HotelsData.json */; };
 		1EC28C4928ECD608002D31C1 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC28C4728ECD608002D31C1 /* ListTableViewCell.swift */; };
 		1EC28C4A28ECD608002D31C1 /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1EC28C4828ECD608002D31C1 /* ListTableViewCell.xib */; };
@@ -26,6 +31,9 @@
 		1EC396F528EA361E0085A47E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EC396F328EA361E0085A47E /* Main.storyboard */; };
 		1EC396F728EA36200085A47E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1EC396F628EA36200085A47E /* Assets.xcassets */; };
 		1EC396FA28EA36200085A47E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EC396F828EA36200085A47E /* LaunchScreen.storyboard */; };
+		1ECC58B328EF49FE005D9536 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECC58B228EF49FE005D9536 /* CoreDataStack.swift */; };
+		1ECC58B628EF4B26005D9536 /* BookmarkData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECC58B428EF4B26005D9536 /* BookmarkData+CoreDataClass.swift */; };
+		1ECC58B728EF4B26005D9536 /* BookmarkData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECC58B528EF4B26005D9536 /* BookmarkData+CoreDataProperties.swift */; };
 		1ED85B5728EC244700C58DC2 /* ArticleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED85B5528EC244700C58DC2 /* ArticleCollectionViewCell.swift */; };
 		1ED85B5828EC244700C58DC2 /* ArticleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1ED85B5628EC244700C58DC2 /* ArticleCollectionViewCell.xib */; };
 		1ED85B5A28EC25EE00C58DC2 /* HomeArticledata.json in Resources */ = {isa = PBXBuildFile; fileRef = 1ED85B5928EC25EE00C58DC2 /* HomeArticledata.json */; };
@@ -47,8 +55,13 @@
 		1E148CB528EE224E004D2CD5 /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
 		1E148CB728EE22A1004D2CD5 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		1E78ABF428EEDAE7005CF873 /* SearchEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEntity.swift; sourceTree = "<group>"; };
+		1E78ABFA28EF1651005CF873 /* BookmarsInfo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BookmarsInfo.xcdatamodel; sourceTree = "<group>"; };
 		1EA54E0828ED7E840015A494 /* flightssData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = flightssData.json; sourceTree = "<group>"; };
 		1EA54E0A28ED7EBF0015A494 /* FlightListEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightListEntity.swift; sourceTree = "<group>"; };
+		1EBD269A28EF8A77000676A6 /* BookmarksModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksModel.swift; sourceTree = "<group>"; };
+		1EBD269C28EF8A88000676A6 /* BookmarksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksViewModel.swift; sourceTree = "<group>"; };
+		1EBD269E28EF8DE9000676A6 /* BookmarksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksTableViewCell.swift; sourceTree = "<group>"; };
+		1EBD269F28EF8DE9000676A6 /* BookmarksTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookmarksTableViewCell.xib; sourceTree = "<group>"; };
 		1EC28C4528ECD5C0002D31C1 /* HotelsData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = HotelsData.json; sourceTree = "<group>"; };
 		1EC28C4728ECD608002D31C1 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		1EC28C4828ECD608002D31C1 /* ListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
@@ -63,6 +76,9 @@
 		1EC396F628EA36200085A47E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1EC396F928EA36200085A47E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1EC396FB28EA36200085A47E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1ECC58B228EF49FE005D9536 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		1ECC58B428EF4B26005D9536 /* BookmarkData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookmarkData+CoreDataClass.swift"; sourceTree = "<group>"; };
+		1ECC58B528EF4B26005D9536 /* BookmarkData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookmarkData+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1ED85B5528EC244700C58DC2 /* ArticleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCollectionViewCell.swift; sourceTree = "<group>"; };
 		1ED85B5628EC244700C58DC2 /* ArticleCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleCollectionViewCell.xib; sourceTree = "<group>"; };
 		1ED85B5928EC25EE00C58DC2 /* HomeArticledata.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = HomeArticledata.json; sourceTree = "<group>"; };
@@ -118,6 +134,7 @@
 		1EC396EC28EA361E0085A47E /* MVVM-TravelApp */ = {
 			isa = PBXGroup;
 			children = (
+				1ECC58B828EF4B38005D9536 /* CoreDataModule */,
 				1EC28C4428ECD14E002D31C1 /* JsonAllData */,
 				1ED85B7828EC47B700C58DC2 /* BookmarksModule */,
 				1ED85B7228EC477700C58DC2 /* DetailModule */,
@@ -132,6 +149,17 @@
 				1EC396FB28EA36200085A47E /* Info.plist */,
 			);
 			path = "MVVM-TravelApp";
+			sourceTree = "<group>";
+		};
+		1ECC58B828EF4B38005D9536 /* CoreDataModule */ = {
+			isa = PBXGroup;
+			children = (
+				1E78ABF928EF1651005CF873 /* BookmarsInfo.xcdatamodeld */,
+				1ECC58B228EF49FE005D9536 /* CoreDataStack.swift */,
+				1ECC58B428EF4B26005D9536 /* BookmarkData+CoreDataClass.swift */,
+				1ECC58B528EF4B26005D9536 /* BookmarkData+CoreDataProperties.swift */,
+			);
+			path = CoreDataModule;
 			sourceTree = "<group>";
 		};
 		1ECCAFB028EAFB1D001643F6 /* HomeModule */ = {
@@ -293,6 +321,7 @@
 		1ED85B7928EC47C000C58DC2 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				1EBD269C28EF8A88000676A6 /* BookmarksViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -301,6 +330,8 @@
 			isa = PBXGroup;
 			children = (
 				1ED85B7628EC47B000C58DC2 /* BookmarksViewController.swift */,
+				1EBD269E28EF8DE9000676A6 /* BookmarksTableViewCell.swift */,
+				1EBD269F28EF8DE9000676A6 /* BookmarksTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -308,6 +339,7 @@
 		1ED85B7B28EC47CB00C58DC2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1EBD269A28EF8A77000676A6 /* BookmarksModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -381,6 +413,7 @@
 				1E148CB428EE223B004D2CD5 /* SearchTableViewCell.xib in Resources */,
 				1EC396FA28EA36200085A47E /* LaunchScreen.storyboard in Resources */,
 				1ED85B5828EC244700C58DC2 /* ArticleCollectionViewCell.xib in Resources */,
+				1EBD26A128EF8DE9000676A6 /* BookmarksTableViewCell.xib in Resources */,
 				1EC396F728EA36200085A47E /* Assets.xcassets in Resources */,
 				1ED85B5A28EC25EE00C58DC2 /* HomeArticledata.json in Resources */,
 				1EC396F528EA361E0085A47E /* Main.storyboard in Resources */,
@@ -395,6 +428,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EBD269D28EF8A88000676A6 /* BookmarksViewModel.swift in Sources */,
 				1EC396F228EA361E0085A47E /* HomeViewController.swift in Sources */,
 				1ED85B7F28EC735B00C58DC2 /* DetailModel.swift in Sources */,
 				1E78ABF528EEDAE7005CF873 /* SearchEntity.swift in Sources */,
@@ -409,13 +443,19 @@
 				1EC28C4928ECD608002D31C1 /* ListTableViewCell.swift in Sources */,
 				1E148CB328EE223B004D2CD5 /* SearchTableViewCell.swift in Sources */,
 				1ED85B7728EC47B000C58DC2 /* BookmarksViewController.swift in Sources */,
+				1ECC58B628EF4B26005D9536 /* BookmarkData+CoreDataClass.swift in Sources */,
+				1ECC58B728EF4B26005D9536 /* BookmarkData+CoreDataProperties.swift in Sources */,
 				1ED85B7D28EC730A00C58DC2 /* DetailViewModel.swift in Sources */,
+				1ECC58B328EF49FE005D9536 /* CoreDataStack.swift in Sources */,
 				1ED85B6028EC2F4700C58DC2 /* HomeArticleViewModel.swift in Sources */,
 				1E148CB828EE22A1004D2CD5 /* SearchViewModel.swift in Sources */,
 				1ED85B6D28EC46EE00C58DC2 /* DetailViewController.swift in Sources */,
 				1EC396EE28EA361E0085A47E /* AppDelegate.swift in Sources */,
+				1EBD269B28EF8A77000676A6 /* BookmarksModel.swift in Sources */,
 				1EA54E0B28ED7EBF0015A494 /* FlightListEntity.swift in Sources */,
+				1EBD26A028EF8DE9000676A6 /* BookmarksTableViewCell.swift in Sources */,
 				1EC396F028EA361E0085A47E /* SceneDelegate.swift in Sources */,
+				1E78ABFB28EF1651005CF873 /* BookmarsInfo.xcdatamodeld in Sources */,
 				1EC28C5228ECE06F002D31C1 /* ListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -655,6 +695,19 @@
 			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		1E78ABF928EF1651005CF873 /* BookmarsInfo.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1E78ABFA28EF1651005CF873 /* BookmarsInfo.xcdatamodel */,
+			);
+			currentVersion = 1E78ABFA28EF1651005CF873 /* BookmarsInfo.xcdatamodel */;
+			path = BookmarsInfo.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1EC396E228EA361E0085A47E /* Project object */;
 }
