@@ -1,0 +1,32 @@
+{
+   "hotelss": [
+       {
+        "id": 0,
+        "name": "Mahali Mzuri, Masai Mara, Kenya",
+        "description": "Part of the Virgin Limited Edition collection, Sir Richard Branson's majestic safari camp in the Masai Mara is 'just perfect', according to one voter. The seemingly space-age tents somehow rise up out of the landscape and blend in with it simultaneously. Wildlife remains abundant in the surrounding bush — ideal for the twice-daily game drives — and the guides are extremely knowledgeable. One respondent raved about the 'excellent service', adding that 'the hospitality provided at Mahali Mzuri resembles the name', which means beautiful place in Swahili. Another reader says simply that it's 'the best luxurious camp to visit on the African continent.'",
+        "image": "https://cdn.pixabay.com/photo/2014/05/30/18/30/vancouver-358515_1280.jpg",
+        "website": "https://www.virginlimitededition.com/en/mahali-mzuri"
+       },
+       {
+        "id": 1,
+        "name": "Nayara Tented Camp, Arenal Volcano National Park, Costa Rica",
+        "description": "The most recent entry to the Nayara brand has all the details covered. Cliff-top safari tents have spacious bathrooms with soaking tubs, private decks, and infinity plunge pools that overlook the lush Costa Rican rain forest and the imposing Arenal Volcano. Elsewhere on the property, guests can spot wildlife like sloths and toucans; take a dip in the dramatic, cantilevered, hot-spring-fed mineral pools; and indulge in the plush spa.",
+        "image": "https://cdn.pixabay.com/photo/2016/10/18/09/02/hotel-1749602_1280.jpg",
+        "website": "https://nayaratentedcamp.com/"
+       },
+       {
+        "id": 2,
+        "name": "The Opposite House, Beijing",
+        "description": "Japanese architect Kengo Kuma designed this emerald glass building with subtle references to traditional Chinese architecture. Rooms are minimalist with luxurious touches like oak soaking tubs and plush beds, the staff is über-attentive, and the location is close to all the Beijing attractions.",
+        "image": "https://cdn.pixabay.com/photo/2012/12/19/18/13/architecture-70920_1280.jpg",
+        "website": "https://www.thehousecollective.com/en/the-opposite-house/"
+       },
+       {
+        "id": 3,
+        "name": "Capella Bangkok",
+        "description": "Situated on the east bank of the Chao Phraya River, this new urban retreat offers impressive views of the lively Thai capital. There are four dining venues, including one overseen by chef Mauro Colagreco of France's Michelin three-starred Mirazur, and a swank spa with treatments, therapies, and fitness classes.",
+        "image": "https://cdn.pixabay.com/photo/2014/12/10/06/49/venetian-562762_1280.jpg",
+        "website": "https://www.capellahotels.com/en/capella-bangkok"
+        }
+   ]
+}
