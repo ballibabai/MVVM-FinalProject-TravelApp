@@ -24,5 +24,5 @@ struct Article: Decodable {
 }
 
 struct ArticleRecord: Decodable {
-    let abc: [Article]?
+    let articless: [Article]?
 }

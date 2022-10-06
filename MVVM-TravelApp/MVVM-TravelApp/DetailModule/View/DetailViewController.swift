@@ -16,6 +16,9 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var backButton: UIButton!
     
     var articles: ArticleEntity?
+    var hotels: HotelList?
+    var flight: FlightList?
+    var searchList: SearchEntity?
     
     var detailVM: DetailViewModel?
     
@@ -23,6 +26,9 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
 
         setupUI()
+        setupUIHotel()
+        setupUIFlight()
+        searchToDetail()
         //iamgeView.image = articles?.images
         backButton.layer.cornerRadius = 8
         
@@ -38,12 +44,40 @@ class DetailViewController: UIViewController {
             }
         }
     }
+    func setupUIHotel(){
+        if let hotels = hotels {
+            titleLabel.text = hotels.name
+            descriptionText.text = hotels.description
+            if let images = hotels.image {
+                iamgeView.kf.setImage(with: URL(string: images))
+            }
+        }
+    }
+    func setupUIFlight(){
+        if let flight = flight {
+            titleLabel.text = flight.name
+            descriptionText.text = flight.description
+            if let images = flight.image {
+                iamgeView.kf.setImage(with: URL(string: images))
+            }
+        }
+    }
+    
+    func searchToDetail(){
+        if let searchList = searchList {
+            titleLabel.text = searchList.name
+            descriptionText.text = searchList.description
+            if let images = searchList.image {
+                iamgeView.kf.setImage(with: URL(string: images))
+            }
+        }
+    }
     
     @IBAction func addButtonTapped(_ sender: UIButton) {
     }
     
     @IBAction func backButton(_ sender: UIButton) {
-        dismiss(animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
 
