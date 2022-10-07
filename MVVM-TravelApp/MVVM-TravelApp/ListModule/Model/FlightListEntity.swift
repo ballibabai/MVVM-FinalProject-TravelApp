@@ -7,12 +7,6 @@
 
 import Foundation
 
-struct FlightList {
-    let image: String?
-    let name: String?
-    let description: String?
-}
-
 struct Flight: Decodable {
     let id: Int?
     let deperture_airport: String?

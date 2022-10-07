@@ -16,6 +16,7 @@ extension BookmarkData {
         return NSFetchRequest<BookmarkData>(entityName: "BookmarkData")
     }
 
+    @NSManaged public var dataId: Int
     @NSManaged public var dataTitle: String?
     @NSManaged public var dataDescription: String?
     @NSManaged public var dataImage: String?

@@ -12,7 +12,8 @@ class BookmarksViewController: UIViewController {
     @IBOutlet weak var bookmarksTableView: UITableView!
     
     private var  bookmarksVM = BookmarksViewModel()
-    private var dataAll2 = [SearchEntity]()
+   // private var dataAll2 = [AllDataEntity]()
+    private var dataAll3 = [BookmarkData]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +24,12 @@ class BookmarksViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         setupUI()
         bookmarksVM.bookmarksVMDelegate = self
-        bookmarksVM.didViewLoad()
+        denemee()
+        
+    }
+    
+    func denemee(){
+        dataAll3 = bookmarksVM.didViewLoad()
     }
     
     func setupUI(){
@@ -44,14 +50,14 @@ extension BookmarksViewController: UITableViewDelegate {
 
 extension BookmarksViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataAll2.count
+        return dataAll3.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = bookmarksTableView.dequeueReusableCell(withIdentifier: "BookmarksTableViewCell", for: indexPath) as! BookmarksTableViewCell
-        cell.bookmarksDescLabel.text = dataAll2[indexPath.row].description
-        cell.bookmarksTitleLabel.text = dataAll2[indexPath.row].name
-        if let url = dataAll2[indexPath.row].image {
+        cell.bookmarksDescLabel.text = dataAll3[indexPath.row].dataDescription
+        cell.bookmarksTitleLabel.text = dataAll3[indexPath.row].dataTitle
+        if let url = dataAll3[indexPath.row].dataImage {
             let thisUrl = URL(string: url)
             cell.bookmarksImageView.kf.setImage(with: thisUrl)
         }
@@ -66,8 +72,9 @@ extension BookmarksViewController {
 }
 
 extension BookmarksViewController: BookmarksViewModelProtocol {
-    func didCellFetchToDo(_ bookData: [SearchEntity]) {
-        self.dataAll2 = bookData
+    func didCellFetchToDo(_ bookData: [BookmarkData]) {
+        self.dataAll3 = bookData
+       // self.dataAll2 = bookData
         DispatchQueue.main.async {
                     self.bookmarksTableView.reloadData()
                 }

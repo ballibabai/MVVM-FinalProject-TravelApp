@@ -31,7 +31,7 @@ final class HomeArticleViewModel {
         return homeArticleModel.articles.count
     }
     
-    func getArticle(at index: Int) -> ArticleEntity {
+    func getArticle(at index: Int) -> AllDataEntity {
         return transfromArticleToArticleEntity(homeArticleModel.articles[index])
     }
         
@@ -41,9 +41,9 @@ final class HomeArticleViewModel {
         print(selectedItem)
       }
     
-     func transfromArticleToArticleEntity(_ article: Article) -> ArticleEntity{
+     func transfromArticleToArticleEntity(_ article: Article) -> AllDataEntity{
         
-        return .init(id: article.id, category: article.category, images: article.images, description: article.description, title: article.title)
+         return .init(id: article.id!, category: article.category, images: article.images, description: article.description, title: article.title)
     }
     
 }

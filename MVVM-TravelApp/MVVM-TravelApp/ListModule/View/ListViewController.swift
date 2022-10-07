@@ -65,15 +65,15 @@ extension ListViewController: UITableViewDataSource {
         let cell = listTableView.dequeueReusableCell(withIdentifier: "ListTableViewCell", for: indexPath) as! ListTableViewCell
         if enumType == .flight {
             cell.hotelFlightDesc.text = listViewModelInstance.getListFlight(at: indexPath.row).description
-            cell.hotelFlightName.text = listViewModelInstance.getListFlight(at: indexPath.row).name
-            if let url = listViewModelInstance.getListFlight(at: indexPath.row).image {
+            cell.hotelFlightName.text = listViewModelInstance.getListFlight(at: indexPath.row).title
+            if let url = listViewModelInstance.getListFlight(at: indexPath.row).images {
                 let thisUrl = URL(string: url)
                 cell.hotelFlightImageView.kf.setImage(with: thisUrl)
             }
         }else {
             cell.hotelFlightDesc.text = listViewModelInstance.getList(at: indexPath.row).description
-            cell.hotelFlightName.text = listViewModelInstance.getList(at: indexPath.row).name
-            if let url = listViewModelInstance.getList(at: indexPath.row).image {
+            cell.hotelFlightName.text = listViewModelInstance.getList(at: indexPath.row).title
+            if let url = listViewModelInstance.getList(at: indexPath.row).images {
                 let thisUrl = URL(string: url)
                 cell.hotelFlightImageView.kf.setImage(with: thisUrl)
             }
@@ -100,10 +100,10 @@ extension ListViewController: ListViewModelProtocol {
     func navigateDetail(_ id: Int) {
         let detailVC = storyboard?.instantiateViewController(withIdentifier: "toDetailVC") as! DetailViewController
         if enumType == .flight {
-            detailVC.flight = listViewModelInstance.getListFlight(at: id)
+            detailVC.allDataEntity = listViewModelInstance.getListFlight(at: id)
             navigationController?.pushViewController(detailVC, animated: true)
         }else {
-            detailVC.hotels = listViewModelInstance.getList(at: id)
+            detailVC.allDataEntity = listViewModelInstance.getList(at: id)
             navigationController?.pushViewController(detailVC, animated: true)
         }
     }

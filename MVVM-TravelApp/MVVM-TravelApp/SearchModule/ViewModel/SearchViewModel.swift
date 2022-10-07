@@ -36,24 +36,25 @@ final class SearchViewModel {
     }
     func numberOfSections() -> Int {1}
     
-    func getListHotel() -> [SearchEntity] {
+    func getListHotel() -> [AllDataEntity] {
         if vmEnumTpye == .hotel {
          return transformSearchListHotel(searchModelInstance.hotels)
         }
-        return [.init(image: "", name: "sdf", description: "dsfsd")]
+        return [.init(id: 0, category: "", images: "", description: "", title: "")]
     }
-    func getListFlight() -> [SearchEntity] {
+    func getListFlight() -> [AllDataEntity] {
         if vmEnumTpye == .flight {
             return transformSearchListFlight(searchModelInstance.flight)
         }
-        return [.init(image: "", name: "dfdsf", description: "dfsdf")]
+        return [.init(id: 0, category: "", images: "", description: "", title: "")]
     }
     
-    func transformSearchListHotel(_ hotel: [Hotel]) -> [SearchEntity] {
-        return self.searchListHotel.map{.init(image: $0.image!, name: $0.name!, description: $0.description!)}
+    func transformSearchListHotel(_ hotel: [Hotel]) -> [AllDataEntity] {
+        return searchListHotel.map{.init(id: $0.id!, category: $0.website, images: $0.image, description: $0.description, title: $0.name)}
     }
-    func transformSearchListFlight(_ flight: [Flight]) -> [SearchEntity] {
-        return self.searchListFlight.map{.init(image: $0.image!, name: $0.flightNumber!, description: $0.deperture_airport!)}
+    func transformSearchListFlight(_ flight: [Flight]) -> [AllDataEntity] {
+        return searchListFlight.map{.init(id: $0.id!, category: $0.deperture_airport, images: $0.image, description: $0.arrival, title: $0.flightNumber)}
+      //rn self.searchListFlight.map{.init(id: $0.id!, image: $0.image!, name: $0.flightNumber!, //description: $0.deperture_airport!)}
     }
     
 //    func didClickItem(at index: Int){

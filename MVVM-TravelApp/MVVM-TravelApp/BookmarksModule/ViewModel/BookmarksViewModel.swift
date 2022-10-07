@@ -8,29 +8,32 @@
 import Foundation
 
 protocol BookmarksViewModelProtocol: AnyObject {
-    func didCellFetchToDo(_ bookData: [SearchEntity])
+    func didCellFetchToDo(_ bookData: [BookmarkData])
 }
 
 final class BookmarksViewModel {
     
     weak var bookmarksVMDelegate: BookmarksViewModelProtocol?
-    
     private let bookmarksModelInstance = BookmarksModel()
     
+    var entityData = [BookmarkData]()
     
     init(){
         bookmarksModelInstance.bookmarksModelDelegate = self
     }
-    
-    func didViewLoad(){
+ 
+    func didViewLoad() -> [BookmarkData]{
         bookmarksModelInstance.getData()
+        entityData = bookmarksModelInstance.coreDataEntity
+        return entityData
     }
 }
 
 extension BookmarksViewModel: BookmarksModelProtocol {
     func didDataFetchProcessFinish(_ isSuccess: Bool) {
         if isSuccess {
-            let dataAll = bookmarksModelInstance.searchEntity
+            let dataAll = bookmarksModelInstance.coreDataEntity
+            //let dataAll = bookmarksModelInstance.searchEntity
             bookmarksVMDelegate?.didCellFetchToDo(dataAll)
                }else {
                    print("Errorr View Modellll")

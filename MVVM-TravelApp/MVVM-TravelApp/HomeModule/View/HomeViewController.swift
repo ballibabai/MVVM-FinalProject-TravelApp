@@ -94,7 +94,7 @@ extension HomeViewController: HomeArticleViewModelProtocol {
     
     func navigateDetail(_ id: Int) {
         let detailVC = storyboard?.instantiateViewController(withIdentifier: "toDetailVC") as! DetailViewController
-        detailVC.articles = homeArticleViewModel.getArticle(at: id)
+        detailVC.allDataEntity = homeArticleViewModel.getArticle(at: id)
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }

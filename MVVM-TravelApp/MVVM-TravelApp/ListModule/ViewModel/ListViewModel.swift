@@ -35,32 +35,32 @@ final class ListViewModel {
     func numberOfItemsFlight() -> Int {
         return hotelFlighInstance.flight.count
     }
-    func getList(at index: Int) -> HotelList {
+    func getList(at index: Int) -> AllDataEntity {
         return transfromArticleToArticleEntity(hotelFlighInstance.hotels[index])
     }
-    func getListFlight(at index: Int) -> FlightList {
+    func getListFlight(at index: Int) -> AllDataEntity {
         return transfromArticleToArticleEntity(hotelFlighInstance.flight[index])
     }
     
     func didClickItem(at index: Int){
         if enumType == .hotel {
             let selectedItem = hotelFlighInstance.hotels[index]
-            ListViewModelDelegate?.navigateDetail(selectedItem.id!)
+            ListViewModelDelegate?.navigateDetail(Int(selectedItem.id!))
         }else {
             let selectedItem = hotelFlighInstance.flight[index]
-            ListViewModelDelegate?.navigateDetail(selectedItem.id!)
+            ListViewModelDelegate?.navigateDetail(Int(selectedItem.id!))
         }
       }
     
     
-    func transfromArticleToArticleEntity(_ hotel: Hotel) -> HotelList{
+    func transfromArticleToArticleEntity(_ hotel: Hotel) -> AllDataEntity{
        
-        return .init(image: hotel.image, name: hotel.name, description: hotel.description)
+        return .init(id: hotel.id!, category: hotel.website, images: hotel.image, description: hotel.description, title: hotel.name)
    }
     
-    func transfromArticleToArticleEntity(_ flight: Flight) -> FlightList{
+    func transfromArticleToArticleEntity(_ flight: Flight) -> AllDataEntity{
        
-        return .init(image: flight.image, name: flight.flightNumber, description: flight.deperture_airport)
+        return .init(id: flight.id!, category: flight.deperture_airport, images: flight.image, description: flight.arrival, title: flight.flightNumber)
    }
 }
 

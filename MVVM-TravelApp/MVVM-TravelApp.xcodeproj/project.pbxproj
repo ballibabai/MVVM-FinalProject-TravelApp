@@ -11,7 +11,7 @@
 		1E148CB428EE223B004D2CD5 /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E148CB228EE223B004D2CD5 /* SearchTableViewCell.xib */; };
 		1E148CB628EE224E004D2CD5 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E148CB528EE224E004D2CD5 /* SearchModel.swift */; };
 		1E148CB828EE22A1004D2CD5 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E148CB728EE22A1004D2CD5 /* SearchViewModel.swift */; };
-		1E78ABF528EEDAE7005CF873 /* SearchEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E78ABF428EEDAE7005CF873 /* SearchEntity.swift */; };
+		1E17B78E28F04C5700EB6C77 /* AllDataEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E17B78D28F04C5700EB6C77 /* AllDataEntity.swift */; };
 		1E78ABFB28EF1651005CF873 /* BookmarsInfo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1E78ABF928EF1651005CF873 /* BookmarsInfo.xcdatamodeld */; };
 		1EA54E0928ED7E840015A494 /* flightssData.json in Resources */ = {isa = PBXBuildFile; fileRef = 1EA54E0828ED7E840015A494 /* flightssData.json */; };
 		1EA54E0B28ED7EBF0015A494 /* FlightListEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA54E0A28ED7EBF0015A494 /* FlightListEntity.swift */; };
@@ -54,7 +54,7 @@
 		1E148CB228EE223B004D2CD5 /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
 		1E148CB528EE224E004D2CD5 /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
 		1E148CB728EE22A1004D2CD5 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
-		1E78ABF428EEDAE7005CF873 /* SearchEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEntity.swift; sourceTree = "<group>"; };
+		1E17B78D28F04C5700EB6C77 /* AllDataEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllDataEntity.swift; sourceTree = "<group>"; };
 		1E78ABFA28EF1651005CF873 /* BookmarsInfo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BookmarsInfo.xcdatamodel; sourceTree = "<group>"; };
 		1EA54E0828ED7E840015A494 /* flightssData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = flightssData.json; sourceTree = "<group>"; };
 		1EA54E0A28ED7EBF0015A494 /* FlightListEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightListEntity.swift; sourceTree = "<group>"; };
@@ -147,6 +147,7 @@
 				1EC396F628EA36200085A47E /* Assets.xcassets */,
 				1EC396F828EA36200085A47E /* LaunchScreen.storyboard */,
 				1EC396FB28EA36200085A47E /* Info.plist */,
+				1E17B78D28F04C5700EB6C77 /* AllDataEntity.swift */,
 			);
 			path = "MVVM-TravelApp";
 			sourceTree = "<group>";
@@ -212,7 +213,6 @@
 		1ED85B6728EC467D00C58DC2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1E78ABF428EEDAE7005CF873 /* SearchEntity.swift */,
 				1E148CB528EE224E004D2CD5 /* SearchModel.swift */,
 			);
 			path = Model;
@@ -431,7 +431,6 @@
 				1EBD269D28EF8A88000676A6 /* BookmarksViewModel.swift in Sources */,
 				1EC396F228EA361E0085A47E /* HomeViewController.swift in Sources */,
 				1ED85B7F28EC735B00C58DC2 /* DetailModel.swift in Sources */,
-				1E78ABF528EEDAE7005CF873 /* SearchEntity.swift in Sources */,
 				1ED85B5728EC244700C58DC2 /* ArticleCollectionViewCell.swift in Sources */,
 				1E148CB628EE224E004D2CD5 /* SearchModel.swift in Sources */,
 				1ED85B6528EC466B00C58DC2 /* SearchViewController.swift in Sources */,
@@ -448,6 +447,7 @@
 				1ED85B7D28EC730A00C58DC2 /* DetailViewModel.swift in Sources */,
 				1ECC58B328EF49FE005D9536 /* CoreDataStack.swift in Sources */,
 				1ED85B6028EC2F4700C58DC2 /* HomeArticleViewModel.swift in Sources */,
+				1E17B78E28F04C5700EB6C77 /* AllDataEntity.swift in Sources */,
 				1E148CB828EE22A1004D2CD5 /* SearchViewModel.swift in Sources */,
 				1ED85B6D28EC46EE00C58DC2 /* DetailViewController.swift in Sources */,
 				1EC396EE28EA361E0085A47E /* AppDelegate.swift in Sources */,

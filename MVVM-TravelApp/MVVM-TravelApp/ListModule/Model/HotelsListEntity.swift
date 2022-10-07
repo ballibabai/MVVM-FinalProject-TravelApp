@@ -14,12 +14,6 @@ enum whichButton: String {
     case article = "Article"
 }
 
-struct HotelList {
-    let image: String?
-    let name: String?
-    let description: String?
-}
-
 struct Hotel: Decodable {
     let id: Int?
     let name: String?

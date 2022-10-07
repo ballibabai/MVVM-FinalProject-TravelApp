@@ -16,69 +16,91 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var onOffButton: UIButton!
     
-    var articles: ArticleEntity?
-    var hotels: HotelList?
-    var flight: FlightList?
-    var searchList: SearchEntity?
+
+    var allDataEntity: AllDataEntity?
     
     var detailVM = DetailViewModel()
+    var bookmarksVMInstance = BookmarksViewModel()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupUI()
-        setupUIHotel()
-        setupUIFlight()
-        searchToDetail()
-        //iamgeView.image = articles?.images
+
         backButton.layer.cornerRadius = 8
+        allDataUI()
         
     }
-    
-    func setupUI(){
-        if let articles = articles {
-            categoryLabel.text = articles.category
-            titleLabel.text = articles.title
-            descriptionText.text = articles.description
-            if let images = articles.images {
-                iamgeView.kf.setImage(with: URL(string: images))
-            }
-        }
-    }
-    func setupUIHotel(){
-        if let hotels = hotels {
-            titleLabel.text = hotels.name
-            descriptionText.text = hotels.description
-            if let images = hotels.image {
-                iamgeView.kf.setImage(with: URL(string: images))
-            }
-        }
-    }
-    func setupUIFlight(){
-        if let flight = flight {
-            titleLabel.text = flight.name
-            descriptionText.text = flight.description
-            if let images = flight.image {
-                iamgeView.kf.setImage(with: URL(string: images))
+    override func viewWillAppear(_ animated: Bool) {
+        for i in bookmarksVMInstance.didViewLoad(){
+            if i.dataTitle == titleLabel.text {
+                onOffButton.setImage(UIImage(named: "Button-1"), for: .normal)
             }
         }
     }
     
-    func searchToDetail(){
-        if let searchList = searchList {
-            titleLabel.text = searchList.name
-            descriptionText.text = searchList.description
-            if let images = searchList.image {
+    func allDataUI(){
+        if let allDataEntity = allDataEntity {
+            categoryLabel.text = allDataEntity.category
+            titleLabel.text = allDataEntity.title
+            descriptionText.text = allDataEntity.description
+            if let images = allDataEntity.images {
                 iamgeView.kf.setImage(with: URL(string: images))
             }
         }
     }
     
     @IBAction func addButtonTapped(_ sender: UIButton) {
+
+        if !bookmarksVMInstance.didViewLoad().isEmpty{
+            for i in bookmarksVMInstance.didViewLoad(){
+                if i.dataTitle == titleLabel.text {
+                    detailVM.didDeleteDataFromCoreData(titleLabel.text!)
+                    onOffButton.setImage(UIImage(named: "Button-0"), for: .normal)
+                    print("silindi")
+                    break
+                }else {
+                    detailVM.saveButtonTapped(titleText: (allDataEntity?.title)!,
+                                              descriptionText: (allDataEntity?.description)!,
+                                              imageView: (allDataEntity?.images)!)
+                    onOffButton.setImage(UIImage(named: "Button-1"), for: .normal)
+                    print("çok eklendi")
+                    break
+                }
+            }
+        }else {
+            detailVM.saveButtonTapped(titleText: (allDataEntity?.title)!,
+                                      descriptionText: (allDataEntity?.description)!,
+                                      imageView: (allDataEntity?.images)!)
+            onOffButton.setImage(UIImage(named: "Button-1"), for: .normal)
+            print("ilk eklendi")
+        }
         
-        detailVM.saveButtonTapped(titleText: (searchList?.name)!, descriptionText: (searchList?.description)!, imageView: (searchList?.image)!) //take input from user and use function for save data
-              
-        
+//
+//        if bookmarksVMInstance.didViewLoad().isEmpty {
+//               detailVM.saveButtonTapped(titleText: (allDataEntity?.title)!,
+//                                         descriptionText: (allDataEntity?.description)!,
+//                                         imageView: (allDataEntity?.images)!)
+//               onOffButton.setImage(UIImage(named: "Button-1"), for: .normal)
+//               print("ilk eklendi")
+//           }else{
+//               for i in bookmarksVMInstance.didViewLoad(){
+//                   if i.dataTitle == titleLabel.text{
+//                       detailVM.didDeleteDataFromCoreData(titleLabel.text!)
+//                       onOffButton.setImage(UIImage(named: "Button-0"), for: .normal)
+//                       print("silindi")
+//                       break
+//                   }else if i.dataTitle != titleLabel.text{
+//                       detailVM.saveButtonTapped(titleText: (allDataEntity?.title)!,
+//                                                 descriptionText: (allDataEntity?.description)!,
+//                                                 imageView: (allDataEntity?.images)!)
+//                       onOffButton.setImage(UIImage(named: "Button-1"), for: .normal)
+//                       print("çok eklendi")
+//                       break
+//                   }
+//               }
+//           }
+
     }
     
     @IBAction func backButton(_ sender: UIButton) {
@@ -87,3 +109,13 @@ class DetailViewController: UIViewController {
     
 
 }
+
+//extension DetailViewController: DetailViewModelProtocol {
+//    func didFetchDataFromCoreData(_ isSuccess: Bool) {
+//        if isSuccess {
+//         //   detailVM.didFetchCoreData(true)
+//        }
+//    }
+//
+    
+

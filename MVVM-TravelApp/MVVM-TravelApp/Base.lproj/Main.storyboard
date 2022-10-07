@@ -189,7 +189,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xcN-5M-VGv">
                                 <rect key="frame" x="52" y="772" width="310" height="54"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="Button-0"/>
                                 <connections>
                                     <action selector="addButtonTapped:" destination="ZcT-Ss-X5g" eventType="touchUpInside" id="Sa6-DL-UlF"/>
                                 </connections>
@@ -417,7 +417,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Button" width="309" height="54"/>
+        <image name="Button-0" width="309" height="54"/>
         <image name="Group 1-1" width="109" height="39"/>
         <image name="Image" width="389" height="403"/>
         <image name="arrowshape.turn.up.backward" catalog="system" width="128" height="106"/>

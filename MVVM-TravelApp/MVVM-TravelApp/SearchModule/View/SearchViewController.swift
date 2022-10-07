@@ -16,7 +16,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     
     private let searchVMInstance = SearchViewModel()
     var enumType: whichButton? = .hotel
-    var searchEntitiy = [SearchEntity]()
+    var searchEntitiy = [AllDataEntity]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,10 +70,18 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         if enumType == .hotel {
             let searchEntitiyHotel = searchVMInstance.getListHotel()
             if let searchText = sender.text {
-                self.searchEntitiy = searchEntitiyHotel.filter{
-                    $0.name!.lowercased().contains(searchText.lowercased())}
-                print(searchEntitiy)
-                searchTableView.reloadData()
+                if searchText.count > 2 {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        self.searchEntitiy = searchEntitiyHotel.filter{
+                            $0.title!.lowercased().contains(searchText.lowercased())}
+                       // print(searchEntitiy)
+                        self.searchTableView.reloadData()
+                    }
+                    
+                }else {
+                    searchEntitiy.removeAll()
+                    self.searchTableView.reloadData()
+                }
             }
     
     
@@ -81,7 +89,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
             let searchEntitiyFlight = searchVMInstance.getListFlight()
             if let searchText = sender.text {
                 self.searchEntitiy = searchEntitiyFlight.filter{
-                    $0.name!.lowercased().contains(searchText.lowercased())}
+                    $0.title!.lowercased().contains(searchText.lowercased())}
                 print(searchEntitiy)
                 searchTableView.reloadData()
             }
@@ -95,7 +103,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
 extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = storyboard?.instantiateViewController(withIdentifier: "toDetailVC") as! DetailViewController
-            detailVC.searchList = searchEntitiy[indexPath.row] //pass to data DetailsVC from here
+            detailVC.allDataEntity = searchEntitiy[indexPath.row] //pass to data DetailsVC from here
             navigationController?.pushViewController(detailVC, animated: true)
     }
 }
@@ -109,9 +117,9 @@ extension SearchViewController: UITableViewDataSource {
         let cell = searchTableView.dequeueReusableCell(withIdentifier: "SearchTableViewCell", for: indexPath) as! SearchTableViewCell
        
            let selectedItem = searchEntitiy[indexPath.row]
-            cell.searchTitleLabel.text = selectedItem.name
+            cell.searchTitleLabel.text = selectedItem.title
             cell.searchDescLabel.text = selectedItem.description
-            if let url = selectedItem.image {
+            if let url = selectedItem.images {
                 let thisURL = URL(string: url)
                 cell.searchImageView.kf.setImage(with: thisURL)
                // self.searchTableView.reloadData()
