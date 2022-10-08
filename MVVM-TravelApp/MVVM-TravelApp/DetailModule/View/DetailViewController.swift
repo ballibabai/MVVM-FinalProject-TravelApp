@@ -22,6 +22,12 @@ class DetailViewController: UIViewController {
     var detailVM = DetailViewModel()
     var bookmarksVMInstance = BookmarksViewModel()
     
+    enum ButtonType {
+        case add
+        case remove
+    }
+    
+    var buttonType: ButtonType = .add
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +41,8 @@ class DetailViewController: UIViewController {
         for i in bookmarksVMInstance.didViewLoad(){
             if i.dataTitle == titleLabel.text {
                 onOffButton.setImage(UIImage(named: "Button-1"), for: .normal)
+                buttonType = .remove
+                break
             }
         }
     }
@@ -51,55 +59,20 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func addButtonTapped(_ sender: UIButton) {
-
-        if !bookmarksVMInstance.didViewLoad().isEmpty{
-            for i in bookmarksVMInstance.didViewLoad(){
-                if i.dataTitle == titleLabel.text {
-                    detailVM.didDeleteDataFromCoreData(titleLabel.text!)
-                    onOffButton.setImage(UIImage(named: "Button-0"), for: .normal)
-                    print("silindi")
-                    break
-                }else {
-                    detailVM.saveButtonTapped(titleText: (allDataEntity?.title)!,
-                                              descriptionText: (allDataEntity?.description)!,
-                                              imageView: (allDataEntity?.images)!)
-                    onOffButton.setImage(UIImage(named: "Button-1"), for: .normal)
-                    print("çok eklendi")
-                    break
-                }
-            }
-        }else {
+        
+        if buttonType == .add {
             detailVM.saveButtonTapped(titleText: (allDataEntity?.title)!,
                                       descriptionText: (allDataEntity?.description)!,
                                       imageView: (allDataEntity?.images)!)
             onOffButton.setImage(UIImage(named: "Button-1"), for: .normal)
+            buttonType = .remove
             print("ilk eklendi")
+        }else{
+            detailVM.didDeleteDataFromCoreData(titleLabel.text!)
+            onOffButton.setImage(UIImage(named: "Button-0"), for: .normal)
+            buttonType = .add
+            print("silindi")
         }
-        
-//
-//        if bookmarksVMInstance.didViewLoad().isEmpty {
-//               detailVM.saveButtonTapped(titleText: (allDataEntity?.title)!,
-//                                         descriptionText: (allDataEntity?.description)!,
-//                                         imageView: (allDataEntity?.images)!)
-//               onOffButton.setImage(UIImage(named: "Button-1"), for: .normal)
-//               print("ilk eklendi")
-//           }else{
-//               for i in bookmarksVMInstance.didViewLoad(){
-//                   if i.dataTitle == titleLabel.text{
-//                       detailVM.didDeleteDataFromCoreData(titleLabel.text!)
-//                       onOffButton.setImage(UIImage(named: "Button-0"), for: .normal)
-//                       print("silindi")
-//                       break
-//                   }else if i.dataTitle != titleLabel.text{
-//                       detailVM.saveButtonTapped(titleText: (allDataEntity?.title)!,
-//                                                 descriptionText: (allDataEntity?.description)!,
-//                                                 imageView: (allDataEntity?.images)!)
-//                       onOffButton.setImage(UIImage(named: "Button-1"), for: .normal)
-//                       print("çok eklendi")
-//                       break
-//                   }
-//               }
-//           }
 
     }
     
@@ -109,13 +82,3 @@ class DetailViewController: UIViewController {
     
 
 }
-
-//extension DetailViewController: DetailViewModelProtocol {
-//    func didFetchDataFromCoreData(_ isSuccess: Bool) {
-//        if isSuccess {
-//         //   detailVM.didFetchCoreData(true)
-//        }
-//    }
-//
-    
-

@@ -42,8 +42,8 @@ final class DetailModel {
                     
                     if let result = result {
                         context.delete(result)
-                        AppDelegate.sharedAppDelegate.coreDataStack.saveContext()
                     }
+            AppDelegate.sharedAppDelegate.coreDataStack.saveContext()
         }catch {
             print("errorrrrr deleteCoreData")
         }

@@ -88,10 +88,17 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         }else {
             let searchEntitiyFlight = searchVMInstance.getListFlight()
             if let searchText = sender.text {
-                self.searchEntitiy = searchEntitiyFlight.filter{
-                    $0.title!.lowercased().contains(searchText.lowercased())}
-                print(searchEntitiy)
-                searchTableView.reloadData()
+               if searchText.count > 2 {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        self.searchEntitiy = searchEntitiyFlight.filter{
+                            $0.title!.lowercased().contains(searchText.lowercased())}
+                       // print(searchEntitiy)
+                        self.searchTableView.reloadData()
+                    }
+                }else {
+                    searchEntitiy.removeAll()
+                    self.searchTableView.reloadData()
+                }
             }
         
         }
