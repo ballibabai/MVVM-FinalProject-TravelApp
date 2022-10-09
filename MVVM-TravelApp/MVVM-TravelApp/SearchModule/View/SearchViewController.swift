@@ -14,6 +14,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var hotelClicked: UIButton!
     @IBOutlet weak var flightClicked: UIButton!
+    @IBOutlet weak var noDataFound: UIImageView!
     
     //MARK: - Properties
     private let searchVMInstance = SearchViewModel()
@@ -31,10 +32,19 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     }
     override func viewWillAppear(_ animated: Bool) {
         didload()
+        if enumType == .hotel {
+            hotelClicked.setImage(UIImage(named: "home tab"), for: .normal)
+            flightClicked.setImage(UIImage(named: "Group 1-1"), for: .normal)
+            searchTextField.text = ""
+            searchData.removeAll()
+        }else {
+            hotelClicked.setImage(UIImage(named: "home tab-1"), for: .normal)
+            flightClicked.setImage(UIImage(named: "Group 1"), for: .normal)
+            searchTextField.text = ""
+            searchData.removeAll()
+        }
     }
-
     //MARK: - Functions
-
     @IBAction func hotelButtonClicked(_ sender: UIButton) {
         enumType = .hotel
         searchVMInstance.vmEnumTpye = .hotel
@@ -43,7 +53,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         flightClicked.imageView?.image = UIImage(named: "Group 1-1")
         searchTextField.text = ""
         searchData.removeAll()
-        searchTableView.reloadData()
+       // searchTableView.reloadData()
     }
     @IBAction func flightButtonClicked(_ sender: UIButton) {
         enumType = .flight
@@ -53,24 +63,33 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         hotelClicked.imageView?.image = UIImage(named: "home tab-1")
         searchTextField.text = ""
         searchData.removeAll()
-        searchTableView.reloadData()
+      //  searchTableView.reloadData()
     }
     
     @IBAction func searchButton(_ sender: UIButton) {
         //Todo
     }
     @IBAction func searchTextEdit(_ sender: UITextField) {
+        self.noDataFound.isHidden = true
         if enumType == .hotel {
             let searchEntitiyHotel = searchVMInstance.getListHotel()
-            if let searchText = sender.text {
-                if searchText.count > 2 {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        self.searchData = searchEntitiyHotel.filter{
-                            $0.title!.lowercased().contains(searchText.lowercased())}
-                       // print(searchEntitiy)
-                        self.searchTableView.reloadData()
-                    }
+            if let searchText = sender.text{
+                if searchText.count > 2{
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [self] in
+                            self.searchData = searchEntitiyHotel.filter{
+                                $0.title!.lowercased().contains(searchText.lowercased())
+                            }
+                        if searchData.count < 1 {
+                                self.searchTableView.isHidden = true
+                                self.noDataFound.isHidden = false
+                        }else {
+                            self.searchTableView.isHidden = false
+                            self.noDataFound.isHidden = true
+                        }
+                            self.searchTableView.reloadData()
+                        }
                 }else {
+                    self.noDataFound.isHidden = false
                     searchData.removeAll()
                     self.searchTableView.reloadData()
                 }
@@ -79,10 +98,16 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
             let searchEntitiyFlight = searchVMInstance.getListFlight()
             if let searchText = sender.text {
                if searchText.count > 2 {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                   DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [self] in
                         self.searchData = searchEntitiyFlight.filter{
                             $0.title!.lowercased().contains(searchText.lowercased())}
-                       // print(searchEntitiy)
+                        if searchData.count < 1 {
+                                self.searchTableView.isHidden = true
+                                self.noDataFound.isHidden = false
+                        }else {
+                            self.searchTableView.isHidden = false
+                            self.noDataFound.isHidden = true
+                        }
                         self.searchTableView.reloadData()
                     }
                 }else {
@@ -90,13 +115,10 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
                     self.searchTableView.reloadData()
                 }
             }
-        
         }
-    
     }
 }
 //MARK: - Extensions
-
 private extension SearchViewController {
     func setupUI(){
         searchTableView.delegate = self
@@ -117,20 +139,17 @@ private extension SearchViewController {
             navigationController?.pushViewController(detailVC, animated: true)
     }
 }
-
 //MARK: - TableViewDelegate
 extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         navigateDetail(indexPath.row)
     }
 }
-
 //MARK: - TableViewDataSource
 extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             return searchData.count
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = searchTableView.dequeueReusableCell(withIdentifier: "SearchTableViewCell", for: indexPath) as! SearchTableViewCell
        
@@ -143,16 +162,12 @@ extension SearchViewController: UITableViewDataSource {
             }
         return cell
     }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200
     }
-    
 }
-
 //MARK: - Protocol
 extension SearchViewController: searchViewModelProtocol {
-    
     func didCellItemFetch(_ isSuccess: Bool) {
         if isSuccess {
             DispatchQueue.main.async {
@@ -162,6 +177,4 @@ extension SearchViewController: searchViewModelProtocol {
             print("eerorrr searchVC")
         }
     }
-    
-    
 }

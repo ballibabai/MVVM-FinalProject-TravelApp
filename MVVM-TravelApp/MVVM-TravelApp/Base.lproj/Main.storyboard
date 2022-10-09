@@ -313,6 +313,10 @@
                                     <action selector="searchTextEdit:" destination="kCZ-jl-ee5" eventType="editingChanged" id="AZj-K5-b8N"/>
                                 </connections>
                             </textField>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 1-2" id="iDg-u1-a3H">
+                                <rect key="frame" x="123" y="414" width="152" height="95"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="NOs-AR-mmM">
                                 <rect key="frame" x="0.0" y="195" width="414" height="618"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -320,7 +324,7 @@
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pNK-6f-Hs2">
                                 <rect key="frame" x="20" y="83" width="120" height="54"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="home tab"/>
+                                <buttonConfiguration key="configuration" style="plain" image="home tab-1"/>
                                 <connections>
                                     <action selector="hotelButtonClicked:" destination="kCZ-jl-ee5" eventType="touchUpInside" id="5zd-DL-cCy"/>
                                 </connections>
@@ -355,6 +359,7 @@
                             <constraint firstItem="AIJ-2H-Qpy" firstAttribute="top" secondItem="uGW-La-Ite" secondAttribute="top" id="RNR-1g-jcr"/>
                             <constraint firstItem="uv5-BQ-BEW" firstAttribute="leading" secondItem="uGW-La-Ite" secondAttribute="leading" constant="20" id="ROY-7i-wwh"/>
                             <constraint firstItem="uGW-La-Ite" firstAttribute="trailing" secondItem="uv5-BQ-BEW" secondAttribute="trailing" constant="20" id="Yvd-Kq-7C0"/>
+                            <constraint firstItem="iDg-u1-a3H" firstAttribute="top" secondItem="uv5-BQ-BEW" secondAttribute="bottom" constant="227" id="bMP-7M-VNu"/>
                             <constraint firstItem="nUD-oM-iga" firstAttribute="top" secondItem="uGW-La-Ite" secondAttribute="top" constant="111" id="eyt-NU-KNQ"/>
                             <constraint firstItem="uGW-La-Ite" firstAttribute="trailing" secondItem="nUD-oM-iga" secondAttribute="trailing" constant="28" id="i2U-lV-Mg4"/>
                             <constraint firstItem="NOs-AR-mmM" firstAttribute="bottom" secondItem="uGW-La-Ite" secondAttribute="bottom" id="kmI-33-aDe"/>
@@ -368,6 +373,7 @@
                     <connections>
                         <outlet property="flightClicked" destination="vo6-Cp-Z7e" id="bIq-g5-htm"/>
                         <outlet property="hotelClicked" destination="pNK-6f-Hs2" id="hOP-MZ-OuX"/>
+                        <outlet property="noDataFound" destination="iDg-u1-a3H" id="UPf-92-VN4"/>
                         <outlet property="searchTableView" destination="NOs-AR-mmM" id="ACx-9a-fCM"/>
                         <outlet property="searchTextField" destination="uv5-BQ-BEW" id="6Fx-30-t4F"/>
                     </connections>
@@ -419,11 +425,12 @@
     <resources>
         <image name="Button-0" width="309" height="54"/>
         <image name="Group 1-1" width="109" height="39"/>
+        <image name="Group 1-2" width="304" height="124.5"/>
         <image name="Image" width="389" height="403"/>
         <image name="arrowshape.turn.up.backward" catalog="system" width="128" height="106"/>
         <image name="backgroundblue" width="390" height="455"/>
         <image name="flight" width="109" height="121"/>
-        <image name="home tab" width="96" height="40"/>
+        <image name="home tab-1" width="96" height="40"/>
         <image name="hotels" width="114" height="121"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="nav bar button" width="68" height="48"/>

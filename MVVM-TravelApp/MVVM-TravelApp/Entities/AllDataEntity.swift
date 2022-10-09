@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AllDataEntity {
+struct AllDataEntity{
     let id: Int
     let category: String?
     let images: String?
