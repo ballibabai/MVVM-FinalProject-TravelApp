@@ -8,12 +8,6 @@
 import Foundation
 
 
-enum whichButton: String {
-    case flight = "Flight"
-    case hotel = "Hotel"
-    case article = "Article"
-}
-
 struct Hotel: Decodable {
     let id: Int?
     let name: String?

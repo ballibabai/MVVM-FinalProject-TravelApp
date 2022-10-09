@@ -35,9 +35,19 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dQC-rt-n0V">
+                                <rect key="frame" x="220" y="10" width="56" height="46"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="Bookmark"/>
+                                <connections>
+                                    <action selector="addArticleToBookmark:" destination="gTV-IL-0wX" eventType="touchUpInside" id="Ifk-8F-1eD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGray4Color"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="dQC-rt-n0V" secondAttribute="trailing" constant="8" id="463-cb-kiF"/>
+                            <constraint firstItem="dQC-rt-n0V" firstAttribute="top" secondItem="dAe-ux-yFx" secondAttribute="top" constant="10" id="9oe-Gw-IQd"/>
                             <constraint firstAttribute="bottom" secondItem="bxg-Y4-y7A" secondAttribute="bottom" constant="92" id="Be4-YC-TLV"/>
                             <constraint firstItem="HgX-gU-Ij4" firstAttribute="leading" secondItem="dAe-ux-yFx" secondAttribute="leading" constant="8" id="DJ8-A1-bUx"/>
                             <constraint firstAttribute="bottom" secondItem="8ag-90-MPp" secondAttribute="bottom" constant="8" id="G6s-Ss-9Eu"/>
@@ -62,6 +72,7 @@
             </constraints>
             <size key="customSize" width="300" height="210"/>
             <connections>
+                <outlet property="bookmarkButton" destination="dQC-rt-n0V" id="PIo-HE-EMH"/>
                 <outlet property="categoryLabel" destination="HgX-gU-Ij4" id="HD1-OH-uTD"/>
                 <outlet property="containerView" destination="dAe-ux-yFx" id="VeK-5q-Hbg"/>
                 <outlet property="imageView" destination="bxg-Y4-y7A" id="ike-xV-OA4"/>
@@ -71,6 +82,7 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="Bookmark" width="32" height="32"/>
         <systemColor name="systemGray4Color">
             <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

@@ -12,7 +12,6 @@ class BookmarksViewController: UIViewController {
     @IBOutlet weak var bookmarksTableView: UITableView!
     
     private var  bookmarksVM = BookmarksViewModel()
-   // private var dataAll2 = [AllDataEntity]()
     private var dataAll3 = [BookmarkData]()
     
     override func viewDidLoad() {
@@ -22,16 +21,15 @@ class BookmarksViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setupUI()
+        
         bookmarksVM.bookmarksVMDelegate = self
         denemee()
         
     }
     
-    func denemee(){
-        dataAll3 = bookmarksVM.didViewLoad()
-    }
-    
+}
+
+private extension BookmarksViewController {
     func setupUI(){
         bookmarksTableView.delegate = self
         bookmarksTableView.dataSource = self
@@ -41,23 +39,29 @@ class BookmarksViewController: UIViewController {
     func registerCell(){
         bookmarksTableView.register(.init(nibName: "BookmarksTableViewCell", bundle: nil), forCellReuseIdentifier: "BookmarksTableViewCell")
     }
-    
+    func denemee(){
+        dataAll3 = bookmarksVM.didViewLoad()
+    }
 }
 
 extension BookmarksViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        bookmarksVM.didClickItem(at: indexPath.row)
+    }
 }
 
 extension BookmarksViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataAll3.count
+        return bookmarksVM.numberOfItems()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = bookmarksTableView.dequeueReusableCell(withIdentifier: "BookmarksTableViewCell", for: indexPath) as! BookmarksTableViewCell
-        cell.bookmarksDescLabel.text = dataAll3[indexPath.row].dataDescription
-        cell.bookmarksTitleLabel.text = dataAll3[indexPath.row].dataTitle
-        if let url = dataAll3[indexPath.row].dataImage {
+        //let selectedItem = bookmarksVM.getDetailData(indexPath.row)
+        let selectedItem2 = bookmarksVM.getDetailDataForAllData(at: indexPath.row)
+        cell.bookmarksDescLabel.text = selectedItem2.description
+        cell.bookmarksTitleLabel.text = selectedItem2.title
+        if let url = selectedItem2.images {
             let thisUrl = URL(string: url)
             cell.bookmarksImageView.kf.setImage(with: thisUrl)
         }
@@ -72,13 +76,27 @@ extension BookmarksViewController {
 }
 
 extension BookmarksViewController: BookmarksViewModelProtocol {
-    func didCellFetchToDo(_ bookData: [BookmarkData]) {
-        self.dataAll3 = bookData
-       // self.dataAll2 = bookData
-        DispatchQueue.main.async {
+    func didCellFetchToDo(_ isSuccess: Bool) {
+        if isSuccess {
+            DispatchQueue.main.async {
                     self.bookmarksTableView.reloadData()
-                }
+            }
+        }
     }
     
+    func navigateDetail(_ id: Int) {
+        let detailVC = storyboard?.instantiateViewController(withIdentifier: "toDetailVC") as! DetailViewController
+        detailVC.allDataEntity = bookmarksVM.getDetailDataForAllData(at: id)
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
+    
+//    func didCellFetchToDo(_ bookData: [BookmarkData]) {
+//        self.dataAll3 = bookData
+//       // self.dataAll2 = bookData
+//        DispatchQueue.main.async {
+//                    self.bookmarksTableView.reloadData()
+//                }
+//    }
+//
     
 }

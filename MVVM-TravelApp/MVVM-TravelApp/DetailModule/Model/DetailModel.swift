@@ -16,8 +16,6 @@ final class DetailModel {
     
     weak var detailModelDelegate: DetailModelProtocol?
     
-    var dataAll3 = [BookmarkData]()
-    
     func fetchData(titleText: String, descriptionText: String, imageView: String){
             let managedContext = AppDelegate.sharedAppDelegate.coreDataStack.managedContext
             let data = BookmarkData(context: managedContext)
@@ -44,8 +42,10 @@ final class DetailModel {
                         context.delete(result)
                     }
             AppDelegate.sharedAppDelegate.coreDataStack.saveContext()
+            detailModelDelegate?.didFetchDataFromCoreData(true)
         }catch {
             print("errorrrrr deleteCoreData")
+            detailModelDelegate?.didFetchDataFromCoreData(false)
         }
         
     }

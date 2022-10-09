@@ -16,16 +16,10 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var onOffButton: UIButton!
     
-
     var allDataEntity: AllDataEntity?
     
     var detailVM = DetailViewModel()
     var bookmarksVMInstance = BookmarksViewModel()
-    
-    enum ButtonType {
-        case add
-        case remove
-    }
     
     var buttonType: ButtonType = .add
     

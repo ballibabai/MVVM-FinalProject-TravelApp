@@ -27,7 +27,6 @@ final class HomeArticleModel {
             if let array = result.articless{
                 articles = array
                 delegate?.didDataFetchProcessFinish(true)
-               // print("deenemeee")
             }
             
         }catch {

@@ -16,49 +16,53 @@ final class ListViewModel {
     
     weak var ListViewModelDelegate: ListViewModelProtocol?
     private var hotelFlighInstance = HotelFlightModel()
-    var enumType: whichButton?
+    var vmEnumType: whichButton?
     
     init(){
         hotelFlighInstance.delegate = self
     }
     
     func didViewLoad(){
+        if vmEnumType == .flight {
             hotelFlighInstance.flightData()
+        }else{
             hotelFlighInstance.hotelData()
+        }
+        
     }
     
     func numberOfSections() -> Int {1}
     
-    func numberOfItems() -> Int {
+    func numberOfItemsHotel() -> Int {
         return hotelFlighInstance.hotels.count
     }
     func numberOfItemsFlight() -> Int {
         return hotelFlighInstance.flight.count
     }
-    func getList(at index: Int) -> AllDataEntity {
-        return transfromArticleToArticleEntity(hotelFlighInstance.hotels[index])
+    func getListHotel(at index: Int) -> AllDataEntity {
+        return transfromHotelToAllDataEntity(hotelFlighInstance.hotels[index])
     }
     func getListFlight(at index: Int) -> AllDataEntity {
-        return transfromArticleToArticleEntity(hotelFlighInstance.flight[index])
+        return transfromFlightToAllDataEntity(hotelFlighInstance.flight[index])
     }
     
     func didClickItem(at index: Int){
-        if enumType == .hotel {
+        if vmEnumType == .hotel {
             let selectedItem = hotelFlighInstance.hotels[index]
-            ListViewModelDelegate?.navigateDetail(Int(selectedItem.id!))
+            ListViewModelDelegate?.navigateDetail(selectedItem.id!)
         }else {
             let selectedItem = hotelFlighInstance.flight[index]
-            ListViewModelDelegate?.navigateDetail(Int(selectedItem.id!))
+            ListViewModelDelegate?.navigateDetail(selectedItem.id!)
         }
       }
     
     
-    func transfromArticleToArticleEntity(_ hotel: Hotel) -> AllDataEntity{
+   private func transfromHotelToAllDataEntity(_ hotel: Hotel) -> AllDataEntity{
        
         return .init(id: hotel.id!, category: hotel.website, images: hotel.image, description: hotel.description, title: hotel.name)
    }
     
-    func transfromArticleToArticleEntity(_ flight: Flight) -> AllDataEntity{
+   private func transfromFlightToAllDataEntity(_ flight: Flight) -> AllDataEntity{
        
         return .init(id: flight.id!, category: flight.deperture_airport, images: flight.image, description: flight.arrival, title: flight.flightNumber)
    }

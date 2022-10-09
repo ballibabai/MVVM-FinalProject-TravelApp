@@ -47,6 +47,7 @@
 		1ED85B7728EC47B000C58DC2 /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED85B7628EC47B000C58DC2 /* BookmarksViewController.swift */; };
 		1ED85B7D28EC730A00C58DC2 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED85B7C28EC730A00C58DC2 /* DetailViewModel.swift */; };
 		1ED85B7F28EC735B00C58DC2 /* DetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED85B7E28EC735B00C58DC2 /* DetailModel.swift */; };
+		1EFE928028F22D3F00813008 /* ButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFE927F28F22D3F00813008 /* ButtonType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +92,7 @@
 		1ED85B7628EC47B000C58DC2 /* BookmarksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
 		1ED85B7C28EC730A00C58DC2 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		1ED85B7E28EC735B00C58DC2 /* DetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModel.swift; sourceTree = "<group>"; };
+		1EFE927F28F22D3F00813008 /* ButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,8 @@
 		1EC396EC28EA361E0085A47E /* MVVM-TravelApp */ = {
 			isa = PBXGroup;
 			children = (
+				1EFE927E28F22CD000813008 /* Entities */,
+				1EFE927D28F22CCB00813008 /* Enums */,
 				1ECC58B828EF4B38005D9536 /* CoreDataModule */,
 				1EC28C4428ECD14E002D31C1 /* JsonAllData */,
 				1ED85B7828EC47B700C58DC2 /* BookmarksModule */,
@@ -147,7 +151,6 @@
 				1EC396F628EA36200085A47E /* Assets.xcassets */,
 				1EC396F828EA36200085A47E /* LaunchScreen.storyboard */,
 				1EC396FB28EA36200085A47E /* Info.plist */,
-				1E17B78D28F04C5700EB6C77 /* AllDataEntity.swift */,
 			);
 			path = "MVVM-TravelApp";
 			sourceTree = "<group>";
@@ -176,7 +179,6 @@
 		1ECCAFB128EAFB56001643F6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1ED85B5B28EC273F00C58DC2 /* HomeArticleEntity.swift */,
 				1ED85B5D28EC284B00C58DC2 /* HomeArticleModel.swift */,
 			);
 			path = Model;
@@ -267,8 +269,6 @@
 		1ED85B7128EC476700C58DC2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1EC28C4D28ECD8E1002D31C1 /* HotelsListEntity.swift */,
-				1EA54E0A28ED7EBF0015A494 /* FlightListEntity.swift */,
 				1EC28C5328ECE0D5002D31C1 /* HotelFlightModel.swift */,
 			);
 			path = Model;
@@ -342,6 +342,25 @@
 				1EBD269A28EF8A77000676A6 /* BookmarksModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		1EFE927D28F22CCB00813008 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				1EFE927F28F22D3F00813008 /* ButtonType.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		1EFE927E28F22CD000813008 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				1EC28C4D28ECD8E1002D31C1 /* HotelsListEntity.swift */,
+				1EA54E0A28ED7EBF0015A494 /* FlightListEntity.swift */,
+				1ED85B5B28EC273F00C58DC2 /* HomeArticleEntity.swift */,
+				1E17B78D28F04C5700EB6C77 /* AllDataEntity.swift */,
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -453,6 +472,7 @@
 				1EC396EE28EA361E0085A47E /* AppDelegate.swift in Sources */,
 				1EBD269B28EF8A77000676A6 /* BookmarksModel.swift in Sources */,
 				1EA54E0B28ED7EBF0015A494 /* FlightListEntity.swift in Sources */,
+				1EFE928028F22D3F00813008 /* ButtonType.swift in Sources */,
 				1EBD26A028EF8DE9000676A6 /* BookmarksTableViewCell.swift in Sources */,
 				1EC396F028EA361E0085A47E /* SceneDelegate.swift in Sources */,
 				1E78ABFB28EF1651005CF873 /* BookmarsInfo.xcdatamodeld in Sources */,

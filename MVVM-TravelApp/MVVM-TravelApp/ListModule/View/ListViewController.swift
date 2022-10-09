@@ -9,32 +9,42 @@ import UIKit
 import Kingfisher
 
 class ListViewController: UIViewController {
+    //MARK: - UI Elements
     @IBOutlet weak var listTableView: UITableView!
     @IBOutlet weak var enumLabel: UILabel!
     
+    //MARK: - Properties
     private let listViewModelInstance = ListViewModel()
     var enumType: whichButton?
+    
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
         listViewModelInstance.ListViewModelDelegate = self
+        //listViewModelInstance.didViewLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         listViewModelInstance.didViewLoad()
     }
     
+    //MARK: - Functions
     @IBAction func backButtonTapped(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
     }
-    
- 
 }
 
+//MARK: - Extensions
 private extension ListViewController {
     func setupUI(){
         if enumType == .flight {
             enumLabel.text = "Flight"
+            listViewModelInstance.vmEnumType = .flight
         }else {
             enumLabel.text = "Hotel"
+            listViewModelInstance.vmEnumType = .hotel
         }
         listTableView.delegate = self
         listTableView.dataSource = self
@@ -46,40 +56,42 @@ private extension ListViewController {
     }
 }
 
+//MARK: - Delegate
 extension ListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         listViewModelInstance.didClickItem(at: indexPath.row)
     }
 }
 
+//MARK: - DataSource
 extension ListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if enumType == .flight {
             return listViewModelInstance.numberOfItemsFlight()
         }else {
-            return listViewModelInstance.numberOfItems()
+            return listViewModelInstance.numberOfItemsHotel()
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = listTableView.dequeueReusableCell(withIdentifier: "ListTableViewCell", for: indexPath) as! ListTableViewCell
         if enumType == .flight {
-            cell.hotelFlightDesc.text = listViewModelInstance.getListFlight(at: indexPath.row).description
-            cell.hotelFlightName.text = listViewModelInstance.getListFlight(at: indexPath.row).title
-            if let url = listViewModelInstance.getListFlight(at: indexPath.row).images {
+            let selectedItem = listViewModelInstance.getListFlight(at: indexPath.row)
+            cell.hotelFlightDesc.text = selectedItem.description
+            cell.hotelFlightName.text = selectedItem.title
+            if let url = selectedItem.images {
                 let thisUrl = URL(string: url)
                 cell.hotelFlightImageView.kf.setImage(with: thisUrl)
             }
         }else {
-            cell.hotelFlightDesc.text = listViewModelInstance.getList(at: indexPath.row).description
-            cell.hotelFlightName.text = listViewModelInstance.getList(at: indexPath.row).title
-            if let url = listViewModelInstance.getList(at: indexPath.row).images {
+            let selectedItem = listViewModelInstance.getListHotel(at: indexPath.row)
+            cell.hotelFlightDesc.text = selectedItem.description
+            cell.hotelFlightName.text = selectedItem.title
+            if let url = selectedItem.images {
                 let thisUrl = URL(string: url)
                 cell.hotelFlightImageView.kf.setImage(with: thisUrl)
             }
         }
-        
-
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -88,6 +100,7 @@ extension ListViewController: UITableViewDataSource {
     
 }
 
+//MARK: - Protocol
 extension ListViewController: ListViewModelProtocol {
     func didCellItemFetch(_ isSuccess: Bool) {
         if isSuccess {
@@ -103,10 +116,8 @@ extension ListViewController: ListViewModelProtocol {
             detailVC.allDataEntity = listViewModelInstance.getListFlight(at: id)
             navigationController?.pushViewController(detailVC, animated: true)
         }else {
-            detailVC.allDataEntity = listViewModelInstance.getList(at: id)
+            detailVC.allDataEntity = listViewModelInstance.getListHotel(at: id)
             navigationController?.pushViewController(detailVC, animated: true)
         }
     }
-
-    
 }

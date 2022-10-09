@@ -9,49 +9,40 @@ import UIKit
 import Kingfisher
 
 class SearchViewController: UIViewController, UITextFieldDelegate {
+    //MARK: - UI Elements
     @IBOutlet weak var searchTableView: UITableView!
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var hotelClicked: UIButton!
     @IBOutlet weak var flightClicked: UIButton!
     
+    //MARK: - Properties
     private let searchVMInstance = SearchViewModel()
-    var enumType: whichButton? = .hotel
+    var enumType: whichButton = .hotel
     var searchEntitiy = [AllDataEntity]()
     
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         searchTextField.delegate = self
         setupUI()
         searchVMInstance.searchViewModelDelegate = self
-        didload()
         view.largeContentTitle = "Deneme"
     }
+    override func viewWillAppear(_ animated: Bool) {
+        didload()
+    }
 
-    private func setupUI(){
-        searchTableView.delegate = self
-        searchTableView.dataSource = self
-        registerCell()
-        searchTableView.reloadData()
-    }
-    
-    func didload(){
-        if enumType == .hotel {
-            searchVMInstance.didViewLoad()
-        }else {
-            searchVMInstance.didViewLoadFlight()
-        }
-    }
-    
-    func registerCell(){
-        searchTableView.register(.init(nibName: "SearchTableViewCell", bundle: nil), forCellReuseIdentifier: "SearchTableViewCell")
-    }
+    //MARK: - Functions
+
     @IBAction func hotelButtonClicked(_ sender: UIButton) {
         enumType = .hotel
         searchVMInstance.vmEnumTpye = .hotel
         didload()
         sender.setImage(UIImage(named: "home tab"), for: .normal)
         flightClicked.imageView?.image = UIImage(named: "Group 1-1")
+        searchTextField.text = ""
+        searchEntitiy.removeAll()
         searchTableView.reloadData()
     }
     @IBAction func flightButtonClicked(_ sender: UIButton) {
@@ -60,6 +51,8 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         didload()
         sender.setImage(UIImage(named: "Group 1"), for: .normal)
         hotelClicked.imageView?.image = UIImage(named: "home tab-1")
+        searchTextField.text = ""
+        searchEntitiy.removeAll()
         searchTableView.reloadData()
     }
     
@@ -77,14 +70,11 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
                        // print(searchEntitiy)
                         self.searchTableView.reloadData()
                     }
-                    
                 }else {
                     searchEntitiy.removeAll()
                     self.searchTableView.reloadData()
                 }
             }
-    
-    
         }else {
             let searchEntitiyFlight = searchVMInstance.getListFlight()
             if let searchText = sender.text {
@@ -107,6 +97,23 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
 }
 //MARK: - Extensions
 
+private extension SearchViewController {
+    func setupUI(){
+        searchTableView.delegate = self
+        searchTableView.dataSource = self
+        registerCell()
+        searchTableView.reloadData()
+        didload()
+    }
+    func registerCell(){
+        searchTableView.register(.init(nibName: "SearchTableViewCell", bundle: nil), forCellReuseIdentifier: "SearchTableViewCell")
+    }
+    func didload(){
+        searchVMInstance.didViewLoad()
+    }
+}
+
+//MARK: - TableViewDelegate
 extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = storyboard?.instantiateViewController(withIdentifier: "toDetailVC") as! DetailViewController
@@ -115,6 +122,7 @@ extension SearchViewController: UITableViewDelegate {
     }
 }
 
+//MARK: - TableViewDataSource
 extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             return searchEntitiy.count
@@ -129,7 +137,6 @@ extension SearchViewController: UITableViewDataSource {
             if let url = selectedItem.images {
                 let thisURL = URL(string: url)
                 cell.searchImageView.kf.setImage(with: thisURL)
-               // self.searchTableView.reloadData()
             }
         return cell
     }
@@ -140,17 +147,8 @@ extension SearchViewController: UITableViewDataSource {
     
 }
 
+//MARK: - Protocol
 extension SearchViewController: searchViewModelProtocol {
-//    func navigateDetail(_ id: Int) {
-//        let detailVC = storyboard?.instantiateViewController(withIdentifier: "toDetailVC") as! DetailViewController
-//        if enumType == .flight {
-//            detailVC.searchList = searchVMInstance.getListFlightToDetail(at: id)
-//            navigationController?.pushViewController(detailVC, animated: true)
-//        }else {
-//            detailVC.searchList = searchVMInstance.getListHotelToDetail(at: id)
-//            navigationController?.pushViewController(detailVC, animated: true)
-//        }
-//    }
     
     func didCellItemFetch(_ isSuccess: Bool) {
         if isSuccess {

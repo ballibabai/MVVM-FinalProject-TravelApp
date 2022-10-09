@@ -9,11 +9,14 @@ import UIKit
 import Kingfisher
 
 class HomeViewController: UIViewController {
+    //MARK: - UI Elements
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    //MARK: - Properties/Instance
     var enumType: whichButton?
     private let homeArticleViewModel = HomeArticleViewModel()
     
-    
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,6 +24,8 @@ class HomeViewController: UIViewController {
         homeArticleViewModel.viewDelegate = self
         homeArticleViewModel.didViewLoad()
     }
+    
+    //MARK: - Functions
     @IBAction func hotelFlightClicked(_ sender: UIButton) {
         if sender.tag == 0 {
                 let flight = storyboard?.instantiateViewController(withIdentifier: "toListVC") as! ListViewController
@@ -38,6 +43,7 @@ class HomeViewController: UIViewController {
 
 }
 
+//MARK: - Extensions
 private extension HomeViewController {
     func setupUI(){
         collectionView.delegate = self
@@ -49,12 +55,14 @@ private extension HomeViewController {
     }
 }
 
+//MARK: - Delegate
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         homeArticleViewModel.didClickItem(at: indexPath.row)
     }
 }
 
+//MARK: - DataSource
 extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return homeArticleViewModel.numberOfItems()
@@ -62,9 +70,10 @@ extension HomeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ArticleCollectionViewCell", for: indexPath) as! ArticleCollectionViewCell
-        cell.titleLabel.text = homeArticleViewModel.getArticle(at: indexPath.row).title
-        cell.categoryLabel.text = homeArticleViewModel.getArticle(at: indexPath.row).category
-        if let url = homeArticleViewModel.getArticle(at: indexPath.row).images {
+        let selectedItem = homeArticleViewModel.getArticle(at: indexPath.row)
+        cell.titleLabel.text = selectedItem.title
+        cell.categoryLabel.text = selectedItem.category
+        if let url = selectedItem.images {
                   let thisUrl = URL(string: url)
                   cell.imageView.kf.setImage(with: thisUrl) //KingFisher for url convert to image
               }
@@ -72,6 +81,7 @@ extension HomeViewController: UICollectionViewDataSource {
     }
 }
 
+//MARK: - FlowLayout
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width / 2, height: collectionView.frame.height)
@@ -83,6 +93,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     
 }
 
+//MARK: - Protocol
 extension HomeViewController: HomeArticleViewModelProtocol {
     func didCellItemFetch(_ isSuccess: Bool) {
         if isSuccess{
@@ -91,7 +102,6 @@ extension HomeViewController: HomeArticleViewModelProtocol {
             }
         }
     }
-    
     func navigateDetail(_ id: Int) {
         let detailVC = storyboard?.instantiateViewController(withIdentifier: "toDetailVC") as! DetailViewController
         detailVC.allDataEntity = homeArticleViewModel.getArticle(at: id)

@@ -18,7 +18,8 @@ final class SearchModel {
     var hotels = [Hotel]()
     var flight = [Flight]()
     
-func hotelData(){
+    
+    func hotelData(){
     guard let path = Bundle.main.path(forResource: "HotelsData", ofType: "json") else {return}
     let url = URL(fileURLWithPath: path)
     

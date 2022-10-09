@@ -8,23 +8,20 @@
 import Foundation
 
 protocol DetailViewModelProtocol: AnyObject {
-    func didFetchDataFromCoreData(_ isSuccess: Bool)
+    func didCoreDataFetch(_ isSuccess: Bool)
+    func didRemoveFromCoreData(_ isSuccess: Bool)
+    func didAddToCoreData(_ isSuccess: Bool)
 }
 
 final class DetailViewModel {
     
     weak var detailVMDelegate: DetailViewModelProtocol?
     private let detailModelInstance = DetailModel()
-    var dataAll4 = [BookmarkData]()
     
     init(){
         detailModelInstance.detailModelDelegate = self
     }
-    
-    
-//    func didDeleteFromCoreData(_ id: Int){
-//        detailModelInstance.deleteDataFromCoreData(id)
-//      }
+
     func didDeleteDataFromCoreData(_ data: String){
         detailModelInstance.coreDataDelete(data)
     }
@@ -38,7 +35,10 @@ final class DetailViewModel {
 extension DetailViewModel: DetailModelProtocol {
     func didFetchDataFromCoreData(_ isSuccess: Bool) {
         if isSuccess{
-            self.dataAll4 = detailModelInstance.dataAll3
+            detailVMDelegate?.didCoreDataFetch(true)
+        }else{
+            print("errorrr DetailVM")
+            detailVMDelegate?.didCoreDataFetch(false)
         }
     }
     
