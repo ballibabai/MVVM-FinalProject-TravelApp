@@ -9,26 +9,27 @@ import UIKit
 import Kingfisher
 
 class BookmarksViewController: UIViewController {
+    //MARK: - UI Elements
     @IBOutlet weak var bookmarksTableView: UITableView!
     
+    //MARK: - Properties
     private var  bookmarksVM = BookmarksViewModel()
     private var dataAll3 = [BookmarkData]()
     
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
         bookmarksVM.bookmarksVMDelegate = self
         denemee()
-        
     }
     
 }
 
+//MARK: - Extensions
 private extension BookmarksViewController {
     func setupUI(){
         bookmarksTableView.delegate = self
@@ -42,14 +43,24 @@ private extension BookmarksViewController {
     func denemee(){
         dataAll3 = bookmarksVM.didViewLoad()
     }
-}
-
-extension BookmarksViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        bookmarksVM.didClickItem(at: indexPath.row)
+    
+    func navigateDetail(_ index: Int) {
+        let detailVC = storyboard?.instantiateViewController(withIdentifier: "toDetailVC") as! DetailViewController
+        detailVC.allDataEntity = bookmarksVM.getDetailDataForAllData(at: index)
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 
+
+//MARK: - Delegate
+extension BookmarksViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        navigateDetail(indexPath.row)
+    }
+}
+
+
+//MARK: - DataSource
 extension BookmarksViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return bookmarksVM.numberOfItems()
@@ -57,7 +68,6 @@ extension BookmarksViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = bookmarksTableView.dequeueReusableCell(withIdentifier: "BookmarksTableViewCell", for: indexPath) as! BookmarksTableViewCell
-        //let selectedItem = bookmarksVM.getDetailData(indexPath.row)
         let selectedItem2 = bookmarksVM.getDetailDataForAllData(at: indexPath.row)
         cell.bookmarksDescLabel.text = selectedItem2.description
         cell.bookmarksTitleLabel.text = selectedItem2.title
@@ -67,14 +77,12 @@ extension BookmarksViewController: UITableViewDataSource {
         }
         return cell
     }
-}
-
-extension BookmarksViewController {
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200
     }
 }
-
+//MARK: - Protocol
 extension BookmarksViewController: BookmarksViewModelProtocol {
     func didCellFetchToDo(_ isSuccess: Bool) {
         if isSuccess {
@@ -83,20 +91,4 @@ extension BookmarksViewController: BookmarksViewModelProtocol {
             }
         }
     }
-    
-    func navigateDetail(_ id: Int) {
-        let detailVC = storyboard?.instantiateViewController(withIdentifier: "toDetailVC") as! DetailViewController
-        detailVC.allDataEntity = bookmarksVM.getDetailDataForAllData(at: id)
-        navigationController?.pushViewController(detailVC, animated: true)
-    }
-    
-//    func didCellFetchToDo(_ bookData: [BookmarkData]) {
-//        self.dataAll3 = bookData
-//       // self.dataAll2 = bookData
-//        DispatchQueue.main.async {
-//                    self.bookmarksTableView.reloadData()
-//                }
-//    }
-//
-    
 }

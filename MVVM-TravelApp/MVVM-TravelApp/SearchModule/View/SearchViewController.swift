@@ -18,7 +18,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     //MARK: - Properties
     private let searchVMInstance = SearchViewModel()
     var enumType: whichButton = .hotel
-    var searchEntitiy = [AllDataEntity]()
+    var searchData = [AllDataEntity]()
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -42,7 +42,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         sender.setImage(UIImage(named: "home tab"), for: .normal)
         flightClicked.imageView?.image = UIImage(named: "Group 1-1")
         searchTextField.text = ""
-        searchEntitiy.removeAll()
+        searchData.removeAll()
         searchTableView.reloadData()
     }
     @IBAction func flightButtonClicked(_ sender: UIButton) {
@@ -52,7 +52,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         sender.setImage(UIImage(named: "Group 1"), for: .normal)
         hotelClicked.imageView?.image = UIImage(named: "home tab-1")
         searchTextField.text = ""
-        searchEntitiy.removeAll()
+        searchData.removeAll()
         searchTableView.reloadData()
     }
     
@@ -65,13 +65,13 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
             if let searchText = sender.text {
                 if searchText.count > 2 {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        self.searchEntitiy = searchEntitiyHotel.filter{
+                        self.searchData = searchEntitiyHotel.filter{
                             $0.title!.lowercased().contains(searchText.lowercased())}
                        // print(searchEntitiy)
                         self.searchTableView.reloadData()
                     }
                 }else {
-                    searchEntitiy.removeAll()
+                    searchData.removeAll()
                     self.searchTableView.reloadData()
                 }
             }
@@ -80,13 +80,13 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
             if let searchText = sender.text {
                if searchText.count > 2 {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        self.searchEntitiy = searchEntitiyFlight.filter{
+                        self.searchData = searchEntitiyFlight.filter{
                             $0.title!.lowercased().contains(searchText.lowercased())}
                        // print(searchEntitiy)
                         self.searchTableView.reloadData()
                     }
                 }else {
-                    searchEntitiy.removeAll()
+                    searchData.removeAll()
                     self.searchTableView.reloadData()
                 }
             }
@@ -111,27 +111,30 @@ private extension SearchViewController {
     func didload(){
         searchVMInstance.didViewLoad()
     }
+    func navigateDetail(_ index: Int){
+        let detailVC = storyboard?.instantiateViewController(withIdentifier: "toDetailVC") as! DetailViewController
+            detailVC.allDataEntity = searchData[index] //pass to data DetailsVC from here
+            navigationController?.pushViewController(detailVC, animated: true)
+    }
 }
 
 //MARK: - TableViewDelegate
 extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailVC = storyboard?.instantiateViewController(withIdentifier: "toDetailVC") as! DetailViewController
-            detailVC.allDataEntity = searchEntitiy[indexPath.row] //pass to data DetailsVC from here
-            navigationController?.pushViewController(detailVC, animated: true)
+        navigateDetail(indexPath.row)
     }
 }
 
 //MARK: - TableViewDataSource
 extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return searchEntitiy.count
+            return searchData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = searchTableView.dequeueReusableCell(withIdentifier: "SearchTableViewCell", for: indexPath) as! SearchTableViewCell
        
-           let selectedItem = searchEntitiy[indexPath.row]
+           let selectedItem = searchData[indexPath.row]
             cell.searchTitleLabel.text = selectedItem.title
             cell.searchDescLabel.text = selectedItem.description
             if let url = selectedItem.images {

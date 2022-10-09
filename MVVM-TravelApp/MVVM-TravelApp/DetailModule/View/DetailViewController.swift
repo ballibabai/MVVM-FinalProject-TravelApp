@@ -9,6 +9,7 @@ import UIKit
 import Kingfisher
 
 class DetailViewController: UIViewController {
+    //MARK: - UI Elements
     @IBOutlet weak var iamgeView: UIImageView!
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
@@ -16,17 +17,17 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var onOffButton: UIButton!
     
+    //MARK: - Properties
     var allDataEntity: AllDataEntity?
-    
     var detailVM = DetailViewModel()
     var bookmarksVMInstance = BookmarksViewModel()
     
     var buttonType: ButtonType = .add
     
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
+        
         backButton.layer.cornerRadius = 8
         allDataUI()
         
@@ -41,6 +42,7 @@ class DetailViewController: UIViewController {
         }
     }
     
+    //MARK: - Functions
     func allDataUI(){
         if let allDataEntity = allDataEntity {
             categoryLabel.text = allDataEntity.category
@@ -60,12 +62,12 @@ class DetailViewController: UIViewController {
                                       imageView: (allDataEntity?.images)!)
             onOffButton.setImage(UIImage(named: "Button-1"), for: .normal)
             buttonType = .remove
-            print("ilk eklendi")
+            print("Added")
         }else{
             detailVM.didDeleteDataFromCoreData(titleLabel.text!)
             onOffButton.setImage(UIImage(named: "Button-0"), for: .normal)
             buttonType = .add
-            print("silindi")
+            print("Deleted")
         }
 
     }

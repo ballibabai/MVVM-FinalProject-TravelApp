@@ -9,7 +9,6 @@ import Foundation
 
 protocol HomeArticleViewModelProtocol: AnyObject {
     func didCellItemFetch(_ isSuccess: Bool)
-    func navigateDetail(_ id: Int)
 }
 
 final class HomeArticleViewModel {
@@ -34,12 +33,6 @@ final class HomeArticleViewModel {
     func getArticle(at index: Int) -> AllDataEntity {
         return transfromArticleToAllDataEntity(homeArticleModel.articles[index])
     }
-        
-    func didClickItem(at index: Int){
-        let selectedItem = homeArticleModel.articles[index]
-        viewDelegate?.navigateDetail(selectedItem.id!)
-        print(selectedItem)
-      }
     
    private func transfromArticleToAllDataEntity(_ article: Article) -> AllDataEntity{
        

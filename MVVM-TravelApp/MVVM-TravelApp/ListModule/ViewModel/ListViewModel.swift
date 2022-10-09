@@ -9,7 +9,6 @@ import Foundation
 
 protocol ListViewModelProtocol: AnyObject {
     func didCellItemFetch(_ isSuccess: Bool)
-    func navigateDetail(_ id: Int)
 }
 
 final class ListViewModel {
@@ -45,17 +44,6 @@ final class ListViewModel {
     func getListFlight(at index: Int) -> AllDataEntity {
         return transfromFlightToAllDataEntity(hotelFlighInstance.flight[index])
     }
-    
-    func didClickItem(at index: Int){
-        if vmEnumType == .hotel {
-            let selectedItem = hotelFlighInstance.hotels[index]
-            ListViewModelDelegate?.navigateDetail(selectedItem.id!)
-        }else {
-            let selectedItem = hotelFlighInstance.flight[index]
-            ListViewModelDelegate?.navigateDetail(selectedItem.id!)
-        }
-      }
-    
     
    private func transfromHotelToAllDataEntity(_ hotel: Hotel) -> AllDataEntity{
        

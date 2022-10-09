@@ -54,12 +54,23 @@ private extension ListViewController {
     func registerCell(){
         listTableView.register(.init(nibName: "ListTableViewCell", bundle: nil), forCellReuseIdentifier: "ListTableViewCell")
     }
+    
+    func navigateDetail(_ index: Int) {
+        let detailVC = storyboard?.instantiateViewController(withIdentifier: "toDetailVC") as! DetailViewController
+        if enumType == .flight {
+            detailVC.allDataEntity = listViewModelInstance.getListFlight(at: index)
+            navigationController?.pushViewController(detailVC, animated: true)
+        }else {
+            detailVC.allDataEntity = listViewModelInstance.getListHotel(at: index)
+            navigationController?.pushViewController(detailVC, animated: true)
+        }
+    }
 }
 
 //MARK: - Delegate
 extension ListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        listViewModelInstance.didClickItem(at: indexPath.row)
+        navigateDetail(indexPath.row)
     }
 }
 
@@ -95,7 +106,7 @@ extension ListViewController: UITableViewDataSource {
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(200)
+        return 200
     }
     
 }
@@ -107,17 +118,6 @@ extension ListViewController: ListViewModelProtocol {
             DispatchQueue.main.async {
                 self.listTableView.reloadData()
             }
-        }
-    }
-    
-    func navigateDetail(_ id: Int) {
-        let detailVC = storyboard?.instantiateViewController(withIdentifier: "toDetailVC") as! DetailViewController
-        if enumType == .flight {
-            detailVC.allDataEntity = listViewModelInstance.getListFlight(at: id)
-            navigationController?.pushViewController(detailVC, animated: true)
-        }else {
-            detailVC.allDataEntity = listViewModelInstance.getListHotel(at: id)
-            navigationController?.pushViewController(detailVC, animated: true)
         }
     }
 }

@@ -53,12 +53,19 @@ private extension HomeViewController {
     func registerCell(){
         collectionView.register(.init(nibName: "ArticleCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ArticleCollectionViewCell")
     }
+    
+    func navigateDetail(_ index: Int) {
+        let detailVC = storyboard?.instantiateViewController(withIdentifier: "toDetailVC") as! DetailViewController
+        detailVC.allDataEntity = homeArticleViewModel.getArticle(at: index)
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
 }
+
 
 //MARK: - Delegate
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        homeArticleViewModel.didClickItem(at: indexPath.row)
+        navigateDetail(indexPath.row)
     }
 }
 
@@ -101,11 +108,6 @@ extension HomeViewController: HomeArticleViewModelProtocol {
                 self.collectionView.reloadData()
             }
         }
-    }
-    func navigateDetail(_ id: Int) {
-        let detailVC = storyboard?.instantiateViewController(withIdentifier: "toDetailVC") as! DetailViewController
-        detailVC.allDataEntity = homeArticleViewModel.getArticle(at: id)
-        navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 
