@@ -23,8 +23,8 @@ final class ListViewModel {
     
     func didViewLoad(){
         if vmEnumType == .flight {
-           // hotelFlighInstance.flightData()
-            hotelFlighInstance.flightsApiFetch()
+            hotelFlighInstance.flightData() //for mockData
+            //hotelFlighInstance.flightsApiFetch() //for Api Request
         }else{
             hotelFlighInstance.hotelData()
         }
@@ -37,15 +37,15 @@ final class ListViewModel {
         return hotelFlighInstance.hotels.count
     }
     func numberOfItemsFlight() -> Int {
-       // return hotelFlighInstance.flight.count   //for mockData
-        return hotelFlighInstance.flightForApi.count
+        return hotelFlighInstance.flight.count   //for mockData
+        //return hotelFlighInstance.flightForApi.count // for Api Request
     }
     func getListHotel(at index: Int) -> AllDataEntity {
         return transfromHotelToAllDataEntity(hotelFlighInstance.hotels[index])
     }
     func getListFlight(at index: Int) -> AllDataEntity {
-        //return transfromFlightToAllDataEntity(hotelFlighInstance.flight[index]) //for mockData
-        return transfromFlightToAllDataEntity(hotelFlighInstance.flightForApi[index])
+       return transfromFlightToAllDataEntity(hotelFlighInstance.flight[index]) //for mockData
+       //return transfromFlightToAllDataEntity(hotelFlighInstance.flightForApi[index]) // for Api Request
     }
     
    private func transfromHotelToAllDataEntity(_ hotel: Hotel) -> AllDataEntity{
