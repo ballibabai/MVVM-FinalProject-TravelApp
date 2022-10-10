@@ -86,10 +86,10 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
                             self.searchTableView.isHidden = false
                             self.noDataFound.isHidden = true
                         }
-                            self.searchTableView.reloadData()
+                        self.searchTableView.reloadData()
                         }
                 }else {
-                    self.noDataFound.isHidden = false
+                    self.searchTableView.isHidden = true
                     searchData.removeAll()
                     self.searchTableView.reloadData()
                 }

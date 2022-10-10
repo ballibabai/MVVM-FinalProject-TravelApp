@@ -24,6 +24,19 @@ final class HomeArticleViewModel {
         homeArticleModel.fetchData() //raw data
     }
     
+    func didViewLoad2() -> [BookmarkData]{
+        homeArticleModel.getData()
+        return homeArticleModel.coreDataEntity
+    }
+    
+    func didDeleteDataFromCoreData(_ data: String){
+        homeArticleModel.coreDataDelete(data)
+    }
+    func saveButtonTapped(titleText: String, descriptionText: String, imageView: String){
+        
+        homeArticleModel.fetchCoreData(titleText: titleText, descriptionText: descriptionText, imageView: imageView)
+    }
+    
     func numberOfSections() -> Int {1}
     
     func numberOfItems() -> Int {

@@ -15,12 +15,6 @@ class HomeViewController: UIViewController {
     //MARK: - Properties/Instance
     var enumType: whichButton?
     private let homeArticleViewModel = HomeArticleViewModel()
-    private let bookMarkViewModel = BookmarksViewModel()
-    private let detailVC = DetailViewController()
-    private let detailVM = DetailViewModel()
-    var buttonType: ButtonType = .add
-    var coreData = [BookmarkData]()
-    var data1 = [BookmarkData]()
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,41 +84,31 @@ extension HomeViewController: UICollectionViewDataSource {
                   cell.imageView.kf.setImage(with: thisUrl) //KingFisher for url convert to image
               }
         
-        for i in bookMarkViewModel.didViewLoad(){
+        cell.bookmarkButton.setImage(UIImage(named: "Bookmark"), for: .normal)
+
+        for i in homeArticleViewModel.didViewLoad2(){
             if i.dataTitle == selectedItem.title {
                 cell.bookmarkButton.setImage(UIImage(named: "Vector"), for: .normal)
-                //buttonType = .remove
-                print(index)
-                print("deneme1")
+                print("try")
             }
         }
-        self.collectionView.reloadItems(at: [indexPath])
         cell.row = indexPath.row
         cell.onTappedButton = { [self] index in
-            
-            for i in bookMarkViewModel.didViewLoad(){
+            var buttonType: ButtonType = .add
+            for i in homeArticleViewModel.didViewLoad2(){
                 if i.dataTitle == selectedItem.title {
-                    cell.bookmarkButton.setImage(UIImage(named: "Vector"), for: .normal)
                     buttonType = .remove
-                    print("deneme2")
-                    print(index)
+                    print("try")
                 }
             }
             if buttonType == .add {
-                detailVM.saveButtonTapped(titleText: selectedItem.title!, descriptionText: selectedItem.description!, imageView: selectedItem.images!)
-                cell.bookmarkButton.setImage(UIImage(named: "Vector"), for: .normal)
-                buttonType = .remove
-                
-                print(index)
+                homeArticleViewModel.saveButtonTapped(titleText: selectedItem.title!, descriptionText: selectedItem.description!, imageView: selectedItem.images!)
                 print("Added")
             }else{
-                detailVM.didDeleteDataFromCoreData(selectedItem.title!)
-                cell.bookmarkButton.setImage(UIImage(named: "Bookmark"), for: .normal)
-                buttonType = .add
-                print(index)
+                homeArticleViewModel.didDeleteDataFromCoreData(selectedItem.title!)
                 print("Deleted")
             }
-          //  self.collectionView.reloadItems(at: [indexPath])
+          self.collectionView.reloadItems(at: [indexPath])
         }
         return cell
     }
