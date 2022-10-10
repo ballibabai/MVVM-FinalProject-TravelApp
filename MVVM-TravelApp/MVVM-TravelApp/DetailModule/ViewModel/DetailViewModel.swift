@@ -9,8 +9,6 @@ import Foundation
 
 protocol DetailViewModelProtocol: AnyObject {
     func didCoreDataFetch(_ isSuccess: Bool)
-    func didRemoveFromCoreData(_ isSuccess: Bool)
-    func didAddToCoreData(_ isSuccess: Bool)
 }
 
 final class DetailViewModel {
@@ -22,6 +20,11 @@ final class DetailViewModel {
         detailModelInstance.detailModelDelegate = self
     }
 
+    func didViewLoad() -> [BookmarkData]{
+        detailModelInstance.getData()
+        return detailModelInstance.coreDataEntity
+    }
+    
     func didDeleteDataFromCoreData(_ data: String){
         detailModelInstance.coreDataDelete(data)
     }
@@ -32,6 +35,7 @@ final class DetailViewModel {
     
 }
 
+//MARK: - Extensions
 extension DetailViewModel: DetailModelProtocol {
     func didFetchDataFromCoreData(_ isSuccess: Bool) {
         if isSuccess{

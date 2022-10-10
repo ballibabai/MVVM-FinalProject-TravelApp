@@ -29,13 +29,17 @@ final class HomeArticleViewModel {
         return homeArticleModel.coreDataEntity
     }
     
+    //delete from coreData
     func didDeleteDataFromCoreData(_ data: String){
         homeArticleModel.coreDataDelete(data)
     }
+    
+    //save to Core data
     func saveButtonTapped(titleText: String, descriptionText: String, imageView: String){
         
         homeArticleModel.fetchCoreData(titleText: titleText, descriptionText: descriptionText, imageView: imageView)
     }
+    
     
     func numberOfSections() -> Int {1}
     
@@ -43,10 +47,12 @@ final class HomeArticleViewModel {
         return homeArticleModel.articles.count
     }
     
+    //list on the screen
     func getArticle(at index: Int) -> AllDataEntity {
         return transfromArticleToAllDataEntity(homeArticleModel.articles[index])
     }
     
+    //transform for the getArticle function. Article to AllDataEntity
    private func transfromArticleToAllDataEntity(_ article: Article) -> AllDataEntity{
        
          return .init(id: article.id!, category: article.category, images: article.images, description: article.description, title: article.title)

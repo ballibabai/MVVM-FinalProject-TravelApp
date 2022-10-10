@@ -43,16 +43,17 @@ final class SearchViewModel {
         return [.init(id: 0, category: "", images: "", description: "", title: "")]
     }
     
-  private  func transformSearchListHotel(_ hotel: [Hotel]) -> [AllDataEntity] {
-        return searchModelInstance.hotels.map{.init(id: $0.id!, category: $0.website, images: $0.image, description: $0.description, title: $0.name)}
-    }
-  private func transformSearchListFlight(_ flight: [Flight]) -> [AllDataEntity] {
-        return searchModelInstance.flight.map{.init(id: $0.id!, category: $0.deperture_airport, images: $0.image, description: $0.arrival, title: $0.flightNumber)}
-    }
-   
+}
+//MARK: - Extension
+private extension SearchViewModel {
+      func transformSearchListHotel(_ hotel: [Hotel]) -> [AllDataEntity] {
+          return searchModelInstance.hotels.map{.init(id: $0.id!, category: $0.website, images: $0.image, description: $0.description, title: $0.name)}
+      }
+      func transformSearchListFlight(_ flight: [Flight]) -> [AllDataEntity] {
+          return searchModelInstance.flight.map{.init(id: $0.id!, category: $0.deperture_airport, images: $0.image, description: $0.arrival, title: $0.flightNumber)}
+      }
 }
 
-//MARK: - Extension
 extension SearchViewModel: searchModelProtocol {
     func didDataFetchProcessFinish(_ isSuccess: Bool) {
         if isSuccess{

@@ -15,6 +15,7 @@ protocol DetailModelProtocol: AnyObject {
 final class DetailModel {
     
     weak var detailModelDelegate: DetailModelProtocol?
+    var coreDataEntity = [BookmarkData]()
     
     func fetchData(titleText: String, descriptionText: String, imageView: String){
             let managedContext = AppDelegate.sharedAppDelegate.coreDataStack.managedContext
@@ -49,4 +50,21 @@ final class DetailModel {
         }
         
     }
+   
+   //The function for to show the added data on the screen
+    func getData(){
+       let fetchRequest: NSFetchRequest<BookmarkData> = BookmarkData.fetchRequest()
+      // let sortByDate = NSSortDescriptor(key: #keyPath(BookmarkData.date), ascending: false)
+      // fetchRequest.sortDescriptors = [sortByDate]
+       do {
+           let context = AppDelegate.sharedAppDelegate.coreDataStack.managedContext
+           let results = try context.fetch(fetchRequest)
+           coreDataEntity = results
+           
+           detailModelDelegate?.didFetchDataFromCoreData(true)
+       }catch{
+           detailModelDelegate?.didFetchDataFromCoreData(false)
+           print("errorrr Fetchh")
+       }
+   }
 }
