@@ -62,6 +62,9 @@ func hotelData(){
 
     }
     
+    
+    //Function for api fetch
+    
 //    func flightsApiFetch(){
 //        AF.request("https://app.goflightlabs.com/routes?access_key=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiZGM1ZGVhZTI4NDRkZTZmMTA3ZDI1NTZmOTc5ZDAwYjU2MmZmY2QxNmM0ZDdlZWVmYTQxMjZkY2ZmYTA5OTRkMDIzNmE4OTVmYWQ0NGZmZjQiLCJpYXQiOjE2NjU0MTE2MTksIm5iZiI6MTY2NTQxMTYxOSwiZXhwIjoxNjk2OTQ3NjE5LCJzdWIiOiIxNDc2NCIsInNjb3BlcyI6W119.J5yl3Ma-hZ3hla8ssrrgZDZueMlbNgqDOOBBd73pfms4_9pQB81uQoz6u68kSMUN9eo3y3yt3Tk8X27jkqLhLw&dep_iata=IST&arr_iata=ADB").response { [weak self ]response in
 //            guard let self = self else {return}

@@ -19,9 +19,7 @@ class DetailViewController: UIViewController {
     
     //MARK: - Properties
     var allDataEntity: AllDataEntity?
-    var detailVM = DetailViewModel()
-    var bookmarksVMInstance = BookmarksViewModel()
-    
+    private let detailVM = DetailViewModel()
     var buttonType: ButtonType = .add
     
     //MARK: - Lifecycle
@@ -33,7 +31,7 @@ class DetailViewController: UIViewController {
         
     }
     override func viewWillAppear(_ animated: Bool) {
-        for i in bookmarksVMInstance.didViewLoad(){
+        for i in detailVM.didViewLoad(){
             if i.dataTitle == titleLabel.text {
                 onOffButton.setImage(UIImage(named: "Button-1"), for: .normal)
                 buttonType = .remove
@@ -41,7 +39,6 @@ class DetailViewController: UIViewController {
             }
         }
     }
-    
     //MARK: - Functions
     @IBAction func addButtonTapped(_ sender: UIButton) {
        saveAndDeleteCoreData()
@@ -63,7 +60,6 @@ private extension DetailViewController {
             }
         }
     }
-    
     func saveAndDeleteCoreData(){
         if buttonType == .add {
             detailVM.saveButtonTapped(titleText: (allDataEntity?.title)!,

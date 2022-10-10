@@ -25,7 +25,7 @@ class HomeViewController: UIViewController {
     
     
     override func viewWillAppear(_ animated: Bool) {
-        homeArticleViewModel.didViewLoad()
+        homeArticleViewModel.didViewLoad() //for each refresh screen
         collectionView.reloadData()
         
     }
@@ -55,11 +55,14 @@ private extension HomeViewController {
         collectionView.register(.init(nibName: "ArticleCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ArticleCollectionViewCell")
     }
     
+    // go to detailVC
     func navigateDetail(_ index: Int) {
         let detailVC = storyboard?.instantiateViewController(withIdentifier: "toDetailVC") as! DetailViewController
         detailVC.allDataEntity = homeArticleViewModel.getArticle(at: index)
         navigationController?.pushViewController(detailVC, animated: true)
     }
+    
+    //if click button in collectionViewCell, trigger this function in onTappedButton closure
     func clickedButtonForClosure(at selectedItem: AllDataEntity){
         var buttonType: ButtonType = .add
         for i in homeArticleViewModel.didViewLoad2(){
@@ -99,8 +102,10 @@ extension HomeViewController: UICollectionViewDataSource {
                   cell.imageView.kf.setImage(with: thisUrl) //KingFisher for url convert to image
               }
         
+        //control button add or delete in collectionViewCell each refresh
         cell.bookmarkButton.setImage(UIImage(named: "Bookmark"), for: .normal)
-
+        
+        //control button add or delete in collectionViewCell each refresh
         for i in homeArticleViewModel.didViewLoad2(){
             if i.dataTitle == selectedItem.title {
                 cell.bookmarkButton.setImage(UIImage(named: "Vector"), for: .normal)

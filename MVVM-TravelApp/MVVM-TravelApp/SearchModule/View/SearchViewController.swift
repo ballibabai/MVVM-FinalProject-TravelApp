@@ -31,15 +31,16 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         view.largeContentTitle = "Deneme"
     }
     override func viewWillAppear(_ animated: Bool) {
-        didload()
+        searchVMInstance.didViewLoad()
+        noDataFound.isHidden = true
         if enumType == .hotel {
-            hotelClicked.setImage(UIImage(named: "home tab"), for: .normal)
-            flightClicked.setImage(UIImage(named: "Group 1-1"), for: .normal)
+            hotelClicked.setImage(UIImage(named: "home tab"), for: .normal) //full
+            flightClicked.setImage(UIImage(named: "Group 1-1"), for: .normal) //empty
             searchTextField.text = ""
             searchData.removeAll()
         }else {
-            hotelClicked.setImage(UIImage(named: "home tab-1"), for: .normal)
-            flightClicked.setImage(UIImage(named: "Group 1"), for: .normal)
+            hotelClicked.setImage(UIImage(named: "home tab-1"), for: .normal) //empty
+            flightClicked.setImage(UIImage(named: "Group 1"), for: .normal) //full
             searchTextField.text = ""
             searchData.removeAll()
         }
@@ -48,22 +49,20 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     @IBAction func hotelButtonClicked(_ sender: UIButton) {
         enumType = .hotel
         searchVMInstance.vmEnumTpye = .hotel
-        didload()
+        searchVMInstance.didViewLoad()
         sender.setImage(UIImage(named: "home tab"), for: .normal)
         flightClicked.imageView?.image = UIImage(named: "Group 1-1")
         searchTextField.text = ""
         searchData.removeAll()
-       // searchTableView.reloadData()
     }
     @IBAction func flightButtonClicked(_ sender: UIButton) {
         enumType = .flight
         searchVMInstance.vmEnumTpye = .flight
-        didload()
+        searchVMInstance.didViewLoad()
         sender.setImage(UIImage(named: "Group 1"), for: .normal)
         hotelClicked.imageView?.image = UIImage(named: "home tab-1")
         searchTextField.text = ""
         searchData.removeAll()
-      //  searchTableView.reloadData()
     }
     
     @IBAction func searchButton(_ sender: UIButton) {
@@ -72,51 +71,9 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     @IBAction func searchTextEdit(_ sender: UITextField) {
         self.noDataFound.isHidden = true
         if enumType == .hotel {
-            let searchEntitiyHotel = searchVMInstance.getListHotel()
-            if let searchText = sender.text{
-                if searchText.count > 2{
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
-                        guard let self = self else {return}
-                            self.searchData = searchEntitiyHotel.filter{
-                                $0.title!.lowercased().contains(searchText.lowercased())
-                            }
-                        if self.searchData.count < 1 {
-                                self.searchTableView.isHidden = true
-                                self.noDataFound.isHidden = false
-                        }else {
-                            self.searchTableView.isHidden = false
-                            self.noDataFound.isHidden = true
-                        }
-                        self.searchTableView.reloadData()
-                        }
-                }else {
-                    self.searchTableView.isHidden = true
-                    searchData.removeAll()
-                    self.searchTableView.reloadData()
-                }
-            }
+            didSearchForHotel(sender)
         }else {
-            let searchEntitiyFlight = searchVMInstance.getListFlight()
-            if let searchText = sender.text {
-               if searchText.count > 2 {
-                   DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
-                       guard let self = self else {return}
-                        self.searchData = searchEntitiyFlight.filter{
-                            $0.title!.lowercased().contains(searchText.lowercased())}
-                       if self.searchData.count < 1 {
-                                self.searchTableView.isHidden = true
-                                self.noDataFound.isHidden = false
-                        }else {
-                            self.searchTableView.isHidden = false
-                            self.noDataFound.isHidden = true
-                        }
-                        self.searchTableView.reloadData()
-                    }
-                }else {
-                    searchData.removeAll()
-                    self.searchTableView.reloadData()
-                }
-            }
+            didSearchForFlight(sender)
         }
     }
 }
@@ -127,18 +84,65 @@ private extension SearchViewController {
         searchTableView.dataSource = self
         registerCell()
         searchTableView.reloadData()
-        didload()
     }
     func registerCell(){
         searchTableView.register(.init(nibName: "SearchTableViewCell", bundle: nil), forCellReuseIdentifier: "SearchTableViewCell")
-    }
-    func didload(){
-        searchVMInstance.didViewLoad()
     }
     func navigateDetail(_ index: Int){
         let detailVC = storyboard?.instantiateViewController(withIdentifier: "toDetailVC") as! DetailViewController
             detailVC.allDataEntity = searchData[index] //pass to data DetailsVC from here
             navigationController?.pushViewController(detailVC, animated: true)
+    }
+    
+    // search for the hotel
+    func didSearchForHotel(_ sender: UITextField){
+        let searchEntitiyHotel = searchVMInstance.getListHotel()
+        if let searchText = sender.text{
+            if searchText.count > 2{
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in //delay 0.5 second for search
+                    guard let self = self else {return}
+                        self.searchData = searchEntitiyHotel.filter{
+                            $0.title!.lowercased().contains(searchText.lowercased())
+                        }
+                    if self.searchData.count < 1 { //control is there data if no data shows image
+                            self.searchTableView.isHidden = true
+                            self.noDataFound.isHidden = false
+                    }else {
+                        self.searchTableView.isHidden = false
+                        self.noDataFound.isHidden = true
+                    }
+                    self.searchTableView.reloadData()
+                    }
+            }else {
+                searchData.removeAll()
+                self.searchTableView.reloadData()
+            }
+        }
+    }
+    
+    //search for the flight
+    func didSearchForFlight(_ sender: UITextField){
+        let searchEntitiyFlight = searchVMInstance.getListFlight()
+        if let searchText = sender.text {
+           if searchText.count > 2 {
+               DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+                   guard let self = self else {return}
+                    self.searchData = searchEntitiyFlight.filter{
+                        $0.title!.lowercased().contains(searchText.lowercased())}
+                   if self.searchData.count < 1 {
+                            self.searchTableView.isHidden = true
+                            self.noDataFound.isHidden = false
+                    }else {
+                        self.searchTableView.isHidden = false
+                        self.noDataFound.isHidden = true
+                    }
+                    self.searchTableView.reloadData()
+                }
+            }else {
+                searchData.removeAll()
+                self.searchTableView.reloadData()
+            }
+        }
     }
 }
 //MARK: - TableViewDelegate

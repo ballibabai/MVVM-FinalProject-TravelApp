@@ -19,6 +19,7 @@ final class HomeArticleModel {
     var articles = [Article]()
     var coreDataEntity = [BookmarkData]()
     
+    //mockData fetch
     func fetchData(){
         guard let path = Bundle.main.path(forResource: "HomeArticledata", ofType: "json") else {return}
         let url = URL(fileURLWithPath: path)
@@ -38,7 +39,7 @@ final class HomeArticleModel {
         }
     }
     
-    
+    //Save to CoreData
     func fetchCoreData(titleText: String, descriptionText: String, imageView: String){
             let managedContext = AppDelegate.sharedAppDelegate.coreDataStack.managedContext
             let data = BookmarkData(context: managedContext)
@@ -51,10 +52,11 @@ final class HomeArticleModel {
             delegate?.didDataFetchProcessFinish(true)
         }
     
+    //Delete from CoreData
     func coreDataDelete(_ title: String){
         
         let request: NSFetchRequest<BookmarkData> = BookmarkData.fetchRequest()
-        let predicate = NSPredicate(format: "dataTitle MATCHES[cd] %@", title)
+        let predicate = NSPredicate(format: "dataTitle MATCHES[cd] %@", title) //predicate like sql query
         request.predicate = predicate
         
         do {
@@ -73,7 +75,7 @@ final class HomeArticleModel {
         
     }
    
-   //The function for to show the added data on the screen
+    //The function for to show the added data on the screen
     func getData(){
        let fetchRequest: NSFetchRequest<BookmarkData> = BookmarkData.fetchRequest()
       // let sortByDate = NSSortDescriptor(key: #keyPath(BookmarkData.date), ascending: false)
