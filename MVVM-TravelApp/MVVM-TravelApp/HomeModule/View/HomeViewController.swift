@@ -21,7 +21,6 @@ class HomeViewController: UIViewController {
         
         setupUI()
         homeArticleViewModel.viewDelegate = self
-        //homeArticleViewModel.didViewLoad()
     }
     
     
@@ -61,6 +60,22 @@ private extension HomeViewController {
         detailVC.allDataEntity = homeArticleViewModel.getArticle(at: index)
         navigationController?.pushViewController(detailVC, animated: true)
     }
+    func clickedButtonForClosure(at selectedItem: AllDataEntity){
+        var buttonType: ButtonType = .add
+        for i in homeArticleViewModel.didViewLoad2(){
+            if i.dataTitle == selectedItem.title {
+                buttonType = .remove
+                print("try")
+            }
+        }
+        if buttonType == .add {
+            homeArticleViewModel.saveButtonTapped(titleText: selectedItem.title!, descriptionText: selectedItem.description!, imageView: selectedItem.images!)
+            print("Added")
+        }else{
+            homeArticleViewModel.didDeleteDataFromCoreData(selectedItem.title!)
+            print("Deleted")
+        }
+    }
 }
 //MARK: - Delegate
 extension HomeViewController: UICollectionViewDelegate {
@@ -89,26 +104,14 @@ extension HomeViewController: UICollectionViewDataSource {
         for i in homeArticleViewModel.didViewLoad2(){
             if i.dataTitle == selectedItem.title {
                 cell.bookmarkButton.setImage(UIImage(named: "Vector"), for: .normal)
-                print("try")
             }
         }
         cell.row = indexPath.row
-        cell.onTappedButton = { [self] index in
-            var buttonType: ButtonType = .add
-            for i in homeArticleViewModel.didViewLoad2(){
-                if i.dataTitle == selectedItem.title {
-                    buttonType = .remove
-                    print("try")
-                }
-            }
-            if buttonType == .add {
-                homeArticleViewModel.saveButtonTapped(titleText: selectedItem.title!, descriptionText: selectedItem.description!, imageView: selectedItem.images!)
-                print("Added")
-            }else{
-                homeArticleViewModel.didDeleteDataFromCoreData(selectedItem.title!)
-                print("Deleted")
-            }
-          self.collectionView.reloadItems(at: [indexPath])
+        cell.onTappedButton = { [weak self] index in
+            guard let self = self else {return}
+            self.clickedButtonForClosure(at: selectedItem)
+            print(index)
+          collectionView.reloadItems(at: [indexPath])
         }
         return cell
     }

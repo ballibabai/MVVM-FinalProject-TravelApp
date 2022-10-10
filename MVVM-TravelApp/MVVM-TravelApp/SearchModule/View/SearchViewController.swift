@@ -75,11 +75,12 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
             let searchEntitiyHotel = searchVMInstance.getListHotel()
             if let searchText = sender.text{
                 if searchText.count > 2{
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [self] in
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+                        guard let self = self else {return}
                             self.searchData = searchEntitiyHotel.filter{
                                 $0.title!.lowercased().contains(searchText.lowercased())
                             }
-                        if searchData.count < 1 {
+                        if self.searchData.count < 1 {
                                 self.searchTableView.isHidden = true
                                 self.noDataFound.isHidden = false
                         }else {
@@ -98,10 +99,11 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
             let searchEntitiyFlight = searchVMInstance.getListFlight()
             if let searchText = sender.text {
                if searchText.count > 2 {
-                   DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [self] in
+                   DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+                       guard let self = self else {return}
                         self.searchData = searchEntitiyFlight.filter{
                             $0.title!.lowercased().contains(searchText.lowercased())}
-                        if searchData.count < 1 {
+                       if self.searchData.count < 1 {
                                 self.searchTableView.isHidden = true
                                 self.noDataFound.isHidden = false
                         }else {

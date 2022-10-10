@@ -43,6 +43,16 @@ class DetailViewController: UIViewController {
     }
     
     //MARK: - Functions
+    @IBAction func addButtonTapped(_ sender: UIButton) {
+       saveAndDeleteCoreData()
+    }
+    @IBAction func backButton(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
+    }
+}
+
+//MARK: - Extensions
+private extension DetailViewController {
     func allDataUI(){
         if let allDataEntity = allDataEntity {
             categoryLabel.text = allDataEntity.category
@@ -54,8 +64,7 @@ class DetailViewController: UIViewController {
         }
     }
     
-    @IBAction func addButtonTapped(_ sender: UIButton) {
-        
+    func saveAndDeleteCoreData(){
         if buttonType == .add {
             detailVM.saveButtonTapped(titleText: (allDataEntity?.title)!,
                                       descriptionText: (allDataEntity?.description)!,
@@ -71,10 +80,4 @@ class DetailViewController: UIViewController {
         }
 
     }
-    
-    @IBAction func backButton(_ sender: UIButton) {
-        navigationController?.popViewController(animated: true)
-    }
-    
-
 }
