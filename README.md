@@ -14,7 +14,7 @@
 - Third field is BookmarkVC made with tableView. default is empty but if save a data can see in here
   - if click a cell, goes to DetailVC
 - DetailVC has imageView, textView and a button
-  - Button is goal for save to core data and delete from core data
+  - Button is goal for save to core data and delete from core data (save/delete same time add to BookmarkVC and delete from BookmarkVC)
 - There are three mockData(Article,Flight and Hotel) and there is a API data from https://app.goflightlabs.com for the Flight
   - Flight data optional if try API data, **HotelFlightModel** and **ListViewModel** have code with comment line
 - If you have problems about **Kingfisher** and **Alamofire** after download zip or clone, you should do fetch or again add Kingfisher and Alamofire in Xcode (Kingfisher and Alamofire installed in app with SPM)
