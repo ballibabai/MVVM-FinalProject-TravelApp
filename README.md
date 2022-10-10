@@ -27,6 +27,7 @@
 - CollectionView
 - Auto Layout
 - OOP
+- Protocol
 - URLSession
 - CoreData
 - Flight API (https://app.goflightlabs.com)
