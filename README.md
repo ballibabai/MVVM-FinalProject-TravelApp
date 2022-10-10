@@ -15,6 +15,7 @@
   - if click a cell, goes to DetailVC
 - DetailVC has imageView, textView and a button
   - Button is goal for save to core data and delete from core data
+- All data is mockData but there is a Api data from https://app.goflightlabs.com for the Flight
 - If you have problems about **Kingfisher** and **Alamofire** after download zip or clone, you should do fetch or again add Kingfisher and Alamofire in Xcode (Kingfisher and Alamofire installed in app with SPM)
 
 #### Tools I use
