@@ -23,7 +23,8 @@ final class ListViewModel {
     
     func didViewLoad(){
         if vmEnumType == .flight {
-            hotelFlighInstance.flightData()
+           // hotelFlighInstance.flightData()
+            hotelFlighInstance.flightsApiFetch()
         }else{
             hotelFlighInstance.hotelData()
         }
@@ -36,13 +37,15 @@ final class ListViewModel {
         return hotelFlighInstance.hotels.count
     }
     func numberOfItemsFlight() -> Int {
-        return hotelFlighInstance.flight.count
+       // return hotelFlighInstance.flight.count   //for mockData
+        return hotelFlighInstance.flightForApi.count
     }
     func getListHotel(at index: Int) -> AllDataEntity {
         return transfromHotelToAllDataEntity(hotelFlighInstance.hotels[index])
     }
     func getListFlight(at index: Int) -> AllDataEntity {
-        return transfromFlightToAllDataEntity(hotelFlighInstance.flight[index])
+        //return transfromFlightToAllDataEntity(hotelFlighInstance.flight[index]) //for mockData
+        return transfromFlightToAllDataEntity(hotelFlighInstance.flightForApi[index])
     }
     
    private func transfromHotelToAllDataEntity(_ hotel: Hotel) -> AllDataEntity{
@@ -52,8 +55,10 @@ final class ListViewModel {
     
    private func transfromFlightToAllDataEntity(_ flight: Flight) -> AllDataEntity{
        
-        return .init(id: flight.id!, category: flight.deperture_airport, images: flight.image, description: flight.arrival, title: flight.flightNumber)
+       return .init(id: flight.id!, category: flight.deperture_airport, images: flight.image, description: flight.arrival, title: flight.flightNumber)
    }
+    
+    
 }
 
 

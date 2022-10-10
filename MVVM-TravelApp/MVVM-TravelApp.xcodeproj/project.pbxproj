@@ -31,6 +31,8 @@
 		1EC396F528EA361E0085A47E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EC396F328EA361E0085A47E /* Main.storyboard */; };
 		1EC396F728EA36200085A47E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1EC396F628EA36200085A47E /* Assets.xcassets */; };
 		1EC396FA28EA36200085A47E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EC396F828EA36200085A47E /* LaunchScreen.storyboard */; };
+		1EC6931628F4642100707FF0 /* FlightsApiEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC6931528F4642100707FF0 /* FlightsApiEntity.swift */; };
+		1EC6931928F464B700707FF0 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 1EC6931828F464B700707FF0 /* Alamofire */; };
 		1ECC58B328EF49FE005D9536 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECC58B228EF49FE005D9536 /* CoreDataStack.swift */; };
 		1ECC58B628EF4B26005D9536 /* BookmarkData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECC58B428EF4B26005D9536 /* BookmarkData+CoreDataClass.swift */; };
 		1ECC58B728EF4B26005D9536 /* BookmarkData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECC58B528EF4B26005D9536 /* BookmarkData+CoreDataProperties.swift */; };
@@ -77,6 +79,7 @@
 		1EC396F628EA36200085A47E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1EC396F928EA36200085A47E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1EC396FB28EA36200085A47E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1EC6931528F4642100707FF0 /* FlightsApiEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightsApiEntity.swift; sourceTree = "<group>"; };
 		1ECC58B228EF49FE005D9536 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		1ECC58B428EF4B26005D9536 /* BookmarkData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookmarkData+CoreDataClass.swift"; sourceTree = "<group>"; };
 		1ECC58B528EF4B26005D9536 /* BookmarkData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookmarkData+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -101,6 +104,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1ED85B6328EC32E000C58DC2 /* Kingfisher in Frameworks */,
+				1EC6931928F464B700707FF0 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,6 +363,7 @@
 				1EA54E0A28ED7EBF0015A494 /* FlightListEntity.swift */,
 				1ED85B5B28EC273F00C58DC2 /* HomeArticleEntity.swift */,
 				1E17B78D28F04C5700EB6C77 /* AllDataEntity.swift */,
+				1EC6931528F4642100707FF0 /* FlightsApiEntity.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -381,6 +386,7 @@
 			name = "MVVM-TravelApp";
 			packageProductDependencies = (
 				1ED85B6228EC32E000C58DC2 /* Kingfisher */,
+				1EC6931828F464B700707FF0 /* Alamofire */,
 			);
 			productName = "MVVM-TravelApp";
 			productReference = 1EC396EA28EA361E0085A47E /* MVVM-TravelApp.app */;
@@ -412,6 +418,7 @@
 			mainGroup = 1EC396E128EA361E0085A47E;
 			packageReferences = (
 				1ED85B6128EC32E000C58DC2 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				1EC6931728F464B700707FF0 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 1EC396EB28EA361E0085A47E /* Products */;
 			projectDirPath = "";
@@ -468,6 +475,7 @@
 				1ED85B6028EC2F4700C58DC2 /* HomeArticleViewModel.swift in Sources */,
 				1E17B78E28F04C5700EB6C77 /* AllDataEntity.swift in Sources */,
 				1E148CB828EE22A1004D2CD5 /* SearchViewModel.swift in Sources */,
+				1EC6931628F4642100707FF0 /* FlightsApiEntity.swift in Sources */,
 				1ED85B6D28EC46EE00C58DC2 /* DetailViewController.swift in Sources */,
 				1EC396EE28EA361E0085A47E /* AppDelegate.swift in Sources */,
 				1EBD269B28EF8A77000676A6 /* BookmarksModel.swift in Sources */,
@@ -698,6 +706,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1EC6931728F464B700707FF0 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.6.1;
+			};
+		};
 		1ED85B6128EC32E000C58DC2 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher";
@@ -709,6 +725,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1EC6931828F464B700707FF0 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1EC6931728F464B700707FF0 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
 		1ED85B6228EC32E000C58DC2 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1ED85B6128EC32E000C58DC2 /* XCRemoteSwiftPackageReference "Kingfisher" */;
